@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ja Morant | The Evolution</title>
+    
+    <!-- FONTE MODERNA E NATURAL (Bebas Neue + Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: #090a0f;
-            color: #ffffff;
+            background-color: #06070a;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             width: 100vw;
         }
 
-        /* Contêiner Deslizante (Slide Horizontal) */
+        /* === SLIDER DE TRANSIÇÃO LATERAL === */
         .viewport-slider {
             display: flex;
             width: 200vw;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .viewport-slider.slide-blazers {
@@ -33,159 +39,227 @@
         .era-panel {
             width: 100vw;
             min-height: 100vh;
-            padding: 60px 8%;
+            padding: 80px 10%;
             flex-shrink: 0;
+            position: relative;
             box-sizing: border-box;
         }
 
-        /* --- TEMA MEMPHIS (Preto & Azul) --- */
+        /* === TEMA GRIZZLIES (Fundo com luzes e grade street) === */
         .grizzlies-theme {
-            background: linear-gradient(180deg, #07080c 0%, #0d111a 100%);
-            color: #e2e8f0;
+            background-color: #06080e;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(29, 78, 216, 0.12) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
         }
 
         .grizzlies-theme h1, .grizzlies-theme h2 {
-            color: #3b82f6;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            font-family: 'Bebas Neue', sans-serif;
+            color: #60a5fa;
+            letter-spacing: 4px;
         }
 
-        /* --- TEMA BLAZERS (Preto & Vermelho) --- */
+        /* === TEMA BLAZERS (Fundo vermelho neon + dark) === */
         .blazers-theme {
-            background: linear-gradient(180deg, #0a0202 0%, #170505 100%);
-            color: #ffffff;
+            background-color: #080304;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(224, 58, 62, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 20% 80%, rgba(153, 27, 27, 0.15) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
         }
 
         .blazers-theme h1, .blazers-theme h2 {
+            font-family: 'Bebas Neue', sans-serif;
             color: #e03a3e;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
         }
 
-        /* Elementos Reutilizáveis */
+        /* === HEADER E NAVEGAÇÃO === */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 35px;
+            margin-bottom: 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
+        header h2 {
+            font-size: 2rem;
+        }
+
+        /* === SEÇÃO HERO (LAYOUT ESPAÇOSO) === */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
             align-items: center;
-            margin: 60px 0;
+            margin-bottom: 120px;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #94a3b8;
+            font-size: 5.5rem;
+            line-height: 0.95;
             margin-bottom: 25px;
         }
 
-        /* Cards de Habilidades (Estilo Referência) */
+        .hero-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        /* === CARDS DE HABILIDADE (ESTILO GLASSMORPHISM) === */
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 60px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 120px;
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px;
-            border-radius: 12px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
 
         .skill-card h3 {
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
 
-        /* Seção Obstáculos/Polêmicas */
+        .skill-card p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        /* === SEÇÃO DE OBSTÁCULOS / POLÊMICAS === */
         .troubles-section {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
             border-left: 4px solid #ef4444;
-            padding: 30px;
-            border-radius: 0 12px 12px 0;
-            margin: 60px 0;
+            padding: 50px 40px;
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 120px;
         }
 
         .troubles-section h2 {
+            font-size: 2.8rem;
             color: #ef4444;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        /* Placeholders para Imagens */
+        .troubles-section p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        /* === PLACEHOLDERS PARA IMAGENS === */
         .img-placeholder {
             width: 100%;
-            height: 380px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 2px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            height: 440px;
+            background: rgba(255, 255, 255, 0.015);
+            border: 2px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748b;
             font-weight: 600;
+            letter-spacing: 1px;
+            transition: border-color 0.3s ease;
         }
 
-        /* Gatilho Transição "a new Ja?" */
+        .img-placeholder:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* === BOTÃO DE TRANSIÇÃO "A NEW JA?" === */
         .transition-trigger-container {
             text-align: center;
-            margin: 80px 0 40px;
+            margin: 100px 0 60px;
         }
 
         .trigger-text {
-            background: none;
+            background: transparent;
             border: none;
-            font-size: 2.2rem;
-            font-weight: 900;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.8rem;
             color: #ffffff;
             cursor: pointer;
-            position: relative;
-            letter-spacing: 3px;
-            text-transform: lowercase;
-            transition: all 0.3s ease;
+            letter-spacing: 4px;
+            transition: all 0.4s ease;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+        }
+
+        .trigger-text span {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.2rem;
+            transition: transform 0.4s ease;
         }
 
         .trigger-text:hover {
             color: #e03a3e;
-            text-shadow: 0 0 20px rgba(224, 58, 62, 0.6);
-            transform: scale(1.05);
+            text-shadow: 0 0 25px rgba(224, 58, 62, 0.7);
         }
 
+        .trigger-text:hover span {
+            transform: translateX(12px);
+        }
+
+        /* BOTÃO VOLTAR */
         .back-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 12px 24px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-bottom: 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: background 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 2.5rem; }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text h1 { font-size: 3.8rem; }
+            .trigger-text { font-size: 2.8rem; }
+            .era-panel { padding: 40px 6%; }
         }
     </style>
 </head>
@@ -196,46 +270,50 @@
         <!-- ================= PAINEL 1: GRIZZLIES ================= -->
         <section class="era-panel grizzlies-theme">
             <header>
-                <h2>12 | BEARS ERA 🏀</h2>
-                <nav>[LINK REDES / MIDIA]</nav>
+                <h2>12 | GRIZZLIES ERA 🏀</h2>
+                <nav>
+                    <a href="#" style="color: #60a5fa; text-decoration: none; font-weight: 600;">[LINK MÍDIAS / REDES]</a>
+                </nav>
             </header>
 
             <div class="hero">
                 <div class="hero-text">
                     <h1>JA MORANT</h1>
-                    <p>O jogador mais eletrizante e destemido da liga. Dominando a quadra com gravidade zero e uma mentalidade que colocou Memphis no topo.</p>
-                    <a href="#" style="color: #3b82f6; text-decoration: none; font-weight: bold;">[LINK HIGHLIGHTS]</a>
+                    <p>Dominando a quadra com gravidade zero, um controle de bola imprevisível e uma mentalidade destemida que colocou Memphis no mapa da liga novamente.</p>
+                    <a href="#" style="color: #60a5fa; text-decoration: none; font-weight: 700; font-size: 1.1rem;">[LINK MELHORES JOGADAS &rarr;]</a>
                 </div>
                 <div class="img-placeholder">[ESPAÇO: IMAGEM PRINCIPAL MEMPHIS]</div>
             </div>
 
-            <!-- SEÇÃO ESTILO REFERÊNCIA (HABILIDADES) -->
+            <h2 class="section-title">HABILIDADES DE ELITE</h2>
+
+            <!-- CARDS ESTILO SITE DE REFERÊNCIA -->
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3 style="color: #3b82f6;">Enterradas</h3>
-                    <p>Saltos inacreditáveis desconsiderando qualquer protetor de aro na NBA.</p>
+                    <h3 style="color: #60a5fa;">Enterradas</h3>
+                    <p>Saltos explosivos que desafiam a física, atacando o aro sem medo de qualquer protetor de elite.</p>
                 </div>
                 <div class="skill-card">
-                    <h3 style="color: #3b82f6;">Passe & Visão</h3>
-                    <p>Assistências sem olhar e controle absoluto do ritmo de jogo.</p>
+                    <h3 style="color: #60a5fa;">Visão & Passe</h3>
+                    <p>Leitura rápida de quadra, passes acrobáticos no ar e assistências no blind-side.</p>
                 </div>
                 <div class="skill-card">
-                    <h3 style="color: #3b82f6;">Velocidade</h3>
-                    <p>Primeiro passo imparável na transição de quadra.</p>
+                    <h3 style="color: #60a5fa;">Primeiro Passo</h3>
+                    <p>Uma aceleração devastadora na transição que deixa marcadores para trás com facilidade.</p>
                 </div>
             </div>
 
-            <!-- SEÇÃO CONFLITOS E TURBULÊNCIAS -->
+            <!-- SEÇÃO DE LESÕES E POLÊMICAS -->
             <div class="troubles-section">
-                <h2>O Preço do Furacão</h2>
-                <p>Lesões graves nos ombros e joelhos, combinadas com controvérsias fora das quadras, multas pesadas e suspensões da liga. O desgaste físico e os erros de percurso colocaram em xeque o futuro de uma das maiores promessas do basquete moderno.</p>
+                <h2>O CUSTO DA TURBULÊNCIA</h2>
+                <p>Nem tudo foi glória. Lesões repetitivas no joelho e ombro, episódios controversos fora das quadras, suspensões duras aplicadas pela NBA e multas pesadas interromperam a ascensão que parecia imparável. O corpo e a reputação pagaram o preço dos excessos e da pressão do estrelato precipitado.</p>
             </div>
 
-            <div class="img-placeholder" style="height: 250px;">[ESPAÇO: GALERIA DE FOTOS GRIZZLIES / MOMENTOS DÍFECEIS]</div>
+            <div class="img-placeholder" style="height: 300px; margin-bottom: 60px;">[ESPAÇO: GALERIA DE FOTOS GRIZZLIES / MOMENTOS DE CRISE]</div>
 
-            <!-- BOTÃO QUE FAZ A TRANSIÇÃO "PASSAR PRO LADO" -->
+            <!-- GATILHO PARA ROLAR PRO LADO -->
             <div class="transition-trigger-container">
-                <button class="trigger-text" id="toBlazers">a new Ja? &rarr;</button>
+                <button class="trigger-text" id="toBlazers">a new Ja? <span>&rarr;</span></button>
             </div>
         </section>
 
@@ -244,51 +322,54 @@
             <button class="back-btn" id="toGrizzlies">&larr; Voltar para Memphis</button>
 
             <header>
-                <h2>12 | RIP CITY 🌹</h2>
-                <nav>[LINK NOVO TIME / LOJA]</nav>
+                <h2>12 | RIP CITY ERA 🌹</h2>
+                <nav>
+                    <a href="#" style="color: #e03a3e; text-decoration: none; font-weight: 600;">[LINK LOJA / BLAZERS]</a>
+                </nav>
             </header>
 
             <div class="hero">
                 <div class="hero-text">
                     <h1>REDEMPTION</h1>
-                    <p>Novo ar, novas cores, a mesma fome. Deixando o passado para trás para liderar o Portland Trail Blazers em uma era de redenção e foco total no anel de campeão.</p>
-                    <a href="#" style="color: #e03a3e; text-decoration: none; font-weight: bold;">[LINK COMUNICADO OFICIAL]</a>
+                    <p>Um novo recomeço nas cores de Portland. Deixando os fantasmas e as controvérsias no passado para focar 100% em basquete, liderança e na busca pelo topo da conferência.</p>
+                    <a href="#" style="color: #e03a3e; text-decoration: none; font-weight: 700; font-size: 1.1rem;">[LINK ANÚNCIO BLAZERS &rarr;]</a>
                 </div>
-                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[ESPAÇO: IMAGEM JA MORANT BLAZERS]</div>
+                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.3);">[ESPAÇO: IMAGEM JA MORANT BLAZERS]</div>
             </div>
+
+            <h2 class="section-title">O NOVO CAPÍTULO</h2>
 
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3 style="color: #e03a3e;">Maturidade</h3>
-                    <p>Liderando um elenco jovem com a experiência de quem já esteve no topo e no fundo do poço.</p>
+                    <p>Foco total dentro de quadra e um papel de liderança renovado com o elenco de Portland.</p>
                 </div>
                 <div class="skill-card">
-                    <h3 style="color: #e03a3e;">Novo Físico</h3>
-                    <p>Foco em recuperação e condicionamento para aguentar o ritmo dos playoffs.</p>
+                    <h3 style="color: #e03a3e;">Preparo Físico</h3>
+                    <p>Trabalho preventivo contra lesões para aguentar o ritmo longo da temporada regular e playoffs.</p>
                 </div>
                 <div class="skill-card">
-                    <h3 style="color: #e03a3e;">Fogo Renovado</h3>
-                    <p>Motivação em dobro para provar aos críticos que ele ainda é um Top Guard.</p>
+                    <h3 style="color: #e03a3e;">Fogo Interno</h3>
+                    <p>A motivação de quem precisa provar novamente ao mundo o seu valor como All-Star.</p>
                 </div>
             </div>
 
-            <div class="img-placeholder" style="height: 250px; border-color: rgba(224, 58, 62, 0.4);">[ESPAÇO: IMAGEM FINAL / BLAZERS UNIFORM]</div>
+            <div class="img-placeholder" style="height: 350px; border-color: rgba(224, 58, 62, 0.3);">[ESPAÇO: FOTO FINAL / UNIFORME RED & BLACK]</div>
         </section>
 
     </div>
 
+    <!-- JAVASCRIPT DA TRANSIÇÃO -->
     <script>
         const slider = document.getElementById('mainSlider');
         const btnToBlazers = document.getElementById('toBlazers');
         const btnToGrizzlies = document.getElementById('toGrizzlies');
 
-        // Transição para o lado dos Blazers
         btnToBlazers.addEventListener('click', () => {
             slider.classList.add('slide-blazers');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Retorno opcional para os Grizzlies
         btnToGrizzlies.addEventListener('click', () => {
             slider.classList.remove('slide-blazers');
             window.scrollTo({ top: 0, behavior: 'smooth' });
