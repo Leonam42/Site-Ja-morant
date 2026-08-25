@@ -1,444 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA MORANT | 12</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A História do Atleta</title>
+  <style>
+    :root {
+      --bg: #090d16;
+      --accent: #38bdf8;
+      --text: #f8fafc;
+    }
 
-    <!-- FONTE URBAN SPORTS (SYNE + INTER) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 1s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-x: hidden;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* MUDANÇAS DE TEMA CONFORME A SESSÃO */
+    body.theme-hs { --bg: #1e1b4b; --accent: #a5b4fc; }
+    body.theme-college { --bg: #064e3b; --accent: #6ee7b7; }
+    body.theme-pro { --bg: #0f172a; --accent: #38bdf8; }
+    body.theme-sky { --bg: #e0f2fe; --text: #0f172a; --accent: #0284c7; }
 
-        body {
-            background-color: #030406;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            width: 100vw;
-        }
+    section {
+      min-height: 100vh;
+      padding: 6rem 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-        /* === ELEMENTO FLUTUANTE DE CABEÇALHO (TÊNIS 3D DA REFERÊNCIA) === */
-        .floating-sneaker {
-            position: fixed;
-            top: 15px;
-            right: 4%;
-            width: 90px;
-            height: 90px;
-            z-index: 100;
-            pointer-events: none;
-            animation: float 4s ease-in-out infinite;
-        }
+    .badge {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(-6deg); }
-        }
+    h1, h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1; }
+    p { max-width: 650px; font-size: 1.25rem; line-height: 1.7; opacity: 0.9; }
 
-        /* === SLIDER HORIZONTAL DE TROCA DE TEMA === */
-        .viewport-slider {
-            display: flex;
-            width: 200vw;
-            transition: transform 1.1s cubic-bezier(0.85, 0, 0.15, 1);
-        }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-        .viewport-slider.slide-blazers {
-            transform: translateX(-100vw);
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
 
-        .era-panel {
-            width: 100vw;
-            min-height: 100vh;
-            padding: 40px 8% 80px;
-            flex-shrink: 0;
-            position: relative;
-            box-sizing: border-box;
-        }
+    .trigger-btn {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      width: fit-content;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+    .trigger-btn:hover { transform: translateY(-3px); }
 
-        /* === TEMA GRIZZLIES (Fundo Dark Navy com Spotlight Neon) === */
-        .grizzlies-theme {
-            background: #04060a;
-            position: relative;
-        }
+    /* EFEITO DE NUVENS */
+    #cloud-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, #ffffff 10%, #bae6fd 60%, #e0f2fe 100%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: scale(0.8) translateY(100%);
+      transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+      filter: blur(20px);
+    }
 
-        .grizzlies-theme::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            left: 20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
-        }
-
-        .grizzlies-theme h1, .grizzlies-theme h2 {
-            font-family: 'Syne', sans-serif;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        /* === TEMA BLAZERS (Fundo Red Glow) === */
-        .blazers-theme {
-            background: #060203;
-            position: relative;
-        }
-
-        .blazers-theme::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            right: 20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(224, 58, 62, 0.25) 0%, rgba(0,0,0,0) 70%);
-            pointer-events: none;
-        }
-
-        .blazers-theme h1, .blazers-theme h2 {
-            font-family: 'Syne', sans-serif;
-            color: #ffffff;
-            text-transform: uppercase;
-        }
-
-        /* === NAV BAR (IGUAL A REFERÊNCIA) === */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            margin-bottom: 60px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-        }
-
-        /* === HERO SECTION === */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 100px;
-        }
-
-        .hero-text h1 {
-            font-size: 5rem;
-            line-height: 0.9;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
-
-        /* === SKILLS GRID (3 CARDS DA REFERÊNCIA) === */
-        .skills-section {
-            margin-bottom: 100px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 35px 25px;
-            border-radius: 12px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .grizzlies-theme .skill-card h3 { color: #3b82f6; }
-        .blazers-theme .skill-card h3 { color: #e03a3e; }
-
-        .skill-card h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .skill-card p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* === SEÇÃO DE LESÕES E POLÊMICAS (HISTÓRIA) === */
-        .troubles-box {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(0,0,0,0) 100%);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-left: 6px solid #ef4444;
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 100px;
-        }
-
-        .troubles-box h2 {
-            font-size: 2.2rem;
-            color: #ef4444 !important;
-            margin-bottom: 15px;
-        }
-
-        .troubles-box p {
-            color: #cbd5e1;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* === GALERIA DE FOTOS (3 IMAGENS IGUAL A REFERÊNCIA) === */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 100px;
-        }
-
-        /* PLACEHOLDERS DE IMAGEM */
-        .img-placeholder {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.02);
-            border: 2px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero .img-placeholder { height: 420px; }
-        .gallery-grid .img-placeholder { height: 260px; }
-
-        /* === BOTÃO DE TRANSIÇÃO (a new Ja?) === */
-        .transition-trigger-container {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .trigger-text {
-            background: none;
-            border: none;
-            font-family: 'Syne', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            cursor: pointer;
-            letter-spacing: -1px;
-            transition: all 0.3s ease;
-            text-transform: lowercase;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .trigger-text:hover {
-            color: #e03a3e;
-            transform: scale(1.04);
-            text-shadow: 0 0 30px rgba(224, 58, 62, 0.5);
-        }
-
-        .back-btn {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        footer {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 900px) {
-            .hero, .skills-grid, .gallery-grid { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 3.5rem; }
-            .trigger-text { font-size: 2.5rem; }
-        }
-    </style>
+    #cloud-overlay.active {
+      opacity: 1;
+      transform: scale(1.5) translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-    <!-- ELEMENTO FLUTUANTE (TÊNIS DA REFERÊNCIA) -->
-    <div class="floating-sneaker img-placeholder" style="border-radius: 50%; font-size: 0.6rem; text-align: center;">
-        [TÊNIS / BALL 3D]
+  <div id="cloud-overlay"></div>
+
+  <!-- INÍCIO / BIO -->
+  <section data-theme="pro">
+    <span class="badge">Biografia</span>
+    <h1>A Origem de um Talento</h1>
+    <p>Uma visão sobre a disciplina, resiliência e habilidades que moldaram um dos atletas mais explosivos da atualidade.</p>
+  </section>
+
+  <!-- ENSINO MÉDIO -->
+  <section data-theme="hs">
+    <span class="badge">Origens • Ensino Médio</span>
+    <h1>Forjado fora do Radar</h1>
+    <p>No ensino médio, longe dos holofotes das grandes academias, o treino no quintal e as quadras locais moldaram a mentalidade competitiva sem limites.</p>
+  </section>
+
+  <!-- CARREIRA E CONQUISTAS -->
+  <section data-theme="pro">
+    <span class="badge">Trajetória Profissional</span>
+    <h1>Conquistas & Marcas</h1>
+    <div class="achievements-grid">
+      <div class="card">
+        <h3>Rookie of the Year</h3>
+        <p>Domínio imediato no primeiro ano da liga.</p>
+      </div>
+      <div class="card">
+        <h3>All-Star Selection</h3>
+        <p>Consagração entre os melhores do mundo.</p>
+      </div>
+      <div class="card">
+        <h3>Most Improved</h3>
+        <p>Evolução constante temporada após temporada.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="viewport-slider" id="mainSlider">
+  <!-- GATILHO DA NOVA ERA -->
+  <section data-theme="pro">
+    <span class="badge">O Próximo Capítulo</span>
+    <h1>Pronto para ir além?</h1>
+    <p>A evolução não para por aqui. Uma nova fase está prestes a começar.</p>
+    <button class="trigger-btn" id="a-new-ja">A new era?</button>
+  </section>
 
-        <!-- ================= PAINEL 1: GRIZZLIES ERA ================= -->
-        <section class="era-panel grizzlies-theme">
-            <header>
-                <div class="logo">JA WORLD 🏀</div>
-                <nav>
-                    <a href="#highlights">[HIGHLIGHTS]</a>
-                    <a href="#skills">[HABILIDADES]</a>
-                    <a href="#historia">[HISTÓRIA]</a>
-                </nav>
-            </header>
+  <!-- PÁGINA DESTINO NAS NUVENS -->
+  <section id="sky-page" data-theme="sky">
+    <span class="badge">Nas Nuvens</span>
+    <h1>O Céu Não É O Limite</h1>
+    <p>Bem-vindo à nova era. Aqui a narrativa atinge o topo, sem barreiras ou gravidade para segurar o ritmo.</p>
+  </section>
 
-            <div class="hero">
-                <div class="hero-text">
-                    <h1 style="color: #3b82f6;">JA MORANT</h1>
-                    <p>O futuro da NBA com estilo, voos inacreditáveis e uma visão de jogo eletrizante.</p>
-                    <a href="#" style="color: #3b82f6; text-decoration: none; font-weight: 800;">[ASSISTIR HIGHLIGHTS &rarr;]</a>
-                </div>
-                <div class="img-placeholder">[FOTO PRINCIPAL JA MORANT]</div>
-            </div>
+  <script>
+    // 1. Mudança dinâmica de fundo baseada no Scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const theme = entry.target.getAttribute('data-theme');
+          document.body.className = ''; 
+          if (theme) document.body.classList.add(`theme-${theme}`);
+        }
+      });
+    }, { threshold: 0.5 });
 
-            <!-- CARDS DE HABILIDADE (3 COLUNAS COMO NO LAMELO) -->
-            <div class="skills-section" id="skills">
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>Enterradas</h3>
-                        <p>Saltos absurdo e enterradas sobre qualquer protetor de aro.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Handles</h3>
-                        <p>Dribles rápidos, trocas de direção e controle absoluto da bola.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Visão de Jogo</h3>
-                        <p>Passes sem olhar e assistências acrobáticas no ar.</p>
-                    </div>
-                </div>
-            </div>
+    sections.forEach(sec => observer.observe(sec));
 
-            <!-- SEÇÃO DE PROBLEMAS / LESÕES / MULTAS -->
-            <div class="troubles-box" id="historia">
-                <h2>O Preço da Turbulência</h2>
-                <p>Lesões graves nos joelhos e ombro, aliadas a controvérsias fora das quadras, multas contratuais e suspensões pesadas aplicadas pela NBA. O desgaste físico e os erros do passado colocaram à prova o futuro do armador em Memphis.</p>
-            </div>
+    // 2. Transição "Indo para as Nuvens"
+    const btn = document.getElementById('a-new-ja');
+    const overlay = document.getElementById('cloud-overlay');
+    const skyPage = document.getElementById('sky-page');
 
-            <!-- GALERIA (3 IMAGENS COMO NO SITE REFERÊNCIA) -->
-            <div class="gallery-grid" id="highlights">
-                <div class="img-placeholder">[JA FOTO 1]</div>
-                <div class="img-placeholder">[JA FOTO 2]</div>
-                <div class="img-placeholder">[JA FOTO 3]</div>
-            </div>
+    btn.addEventListener('click', () => {
+      overlay.classList.add('active');
+      
+      setTimeout(() => {
+        skyPage.scrollIntoView({ behavior: 'instant' });
+      }, 600);
 
-            <!-- BOTÃO DE TRANSIÇÃO DE TEMA -->
-            <div class="transition-trigger-container">
-                <button class="trigger-text" id="toBlazers">a new Ja? &rarr;</button>
-            </div>
-
-            <footer>
-                <p>Site inspirado na trajetória de Ja Morant 🏀</p>
-            </footer>
-        </section>
-
-        <!-- ================= PAINEL 2: BLAZERS ERA ================= -->
-        <section class="era-panel blazers-theme">
-            <button class="back-btn" id="toGrizzlies">&larr; Voltar para Memphis</button>
-
-            <header>
-                <div class="logo">RIP CITY 🌹</div>
-                <nav>
-                    <a href="#">[NOVA ERA]</a>
-                    <a href="#">[LOJA]</a>
-                </nav>
-            </header>
-
-            <div class="hero">
-                <div class="hero-text">
-                    <h1 style="color: #e03a3e;">PORTLAND ERA</h1>
-                    <p>Um novo capítulo começa em Vermelho e Preto. Redenção, foco absoluto no basquete e a busca pelo topo.</p>
-                    <a href="#" style="color: #e03a3e; text-decoration: none; font-weight: 800;">[VER ANÚNCIO OFICIAL &rarr;]</a>
-                </div>
-                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[FOTO JA MORANT BLAZERS]</div>
-            </div>
-
-            <div class="skills-section">
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>Maturidade</h3>
-                        <p>Liderança renovada dentro e fora dos vestiários.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Preparo Físico</h3>
-                        <p>Trabalho focado na prevenção de lesões para aguentar os playoffs.</p>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Redenção</h3>
-                        <p>Sede de vitória para provar seu valor entre os melhores da liga.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[BLAZERS FOTO 1]</div>
-                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[BLAZERS FOTO 2]</div>
-                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[BLAZERS FOTO 3]</div>
-            </div>
-
-            <footer>
-                <p>O novo capítulo de Ja Morant em Portland 🏀</p>
-            </footer>
-        </section>
-
-    </div>
-
-    <script>
-        const slider = document.getElementById('mainSlider');
-        const btnToBlazers = document.getElementById('toBlazers');
-        const btnToGrizzlies = document.getElementById('toGrizzlies');
-
-        btnToBlazers.addEventListener('click', () => {
-            slider.classList.add('slide-blazers');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        btnToGrizzlies.addEventListener('click', () => {
-            slider.classList.remove('slide-blazers');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
+      setTimeout(() => {
+        overlay.classList.remove('active');
+      }, 1200);
+    });
+  </script>
 </body>
 </html>
