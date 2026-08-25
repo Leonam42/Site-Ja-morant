@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ja Morant | O Voo do Armador</title>
+    <style>
+        /* === VARIÁVEIS DE CORES === */
+        :root {
+            /* Tema Grizzlies (Início de Carreira) */
+            --grizz-navy: #12173F;
+            --grizz-blue: #5D76A9;
+            --grizz-gold: #F5B112;
+            --grizz-text: #FFFFFF;
+
+            /* Tema Blazers (Nova Era) */
+            --blazers-black: #000000;
+            --blazers-red: #E03A3E;
+            --blazers-white: #FFFFFF;
+        }
+
+        /* === RESET BÁSICO === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* === CLASSES DE TEMA === */
+        .theme-grizzlies {
+            background-color: var(--grizz-navy);
+            color: var(--grizz-text);
+        }
+        .theme-grizzlies h1, .theme-grizzlies h2 {
+            color: var(--grizz-gold);
+        }
+        .theme-grizzlies .btn {
+            background-color: var(--grizz-blue);
+            color: white;
+        }
+
+        .theme-blazers {
+            background-color: var(--blazers-black);
+            color: var(--blazers-white);
+        }
+        .theme-blazers h1, .theme-blazers h2 {
+            color: var(--blazers-red);
+        }
+        .theme-blazers .btn {
+            background-color: var(--blazers-red);
+            color: white;
+        }
+
+        /* === ESTRUTURA DAS SEÇÕES === */
+        section {
+            min-height: 100vh;
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .text-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .text-box p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .image-placeholder {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        /* Estilização do Botão (Link) */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* === TRANSIÇÃO DE EQUIPE === */
+        .transition-banner {
+            height: 20vh;
+            background: linear-gradient(to bottom, var(--grizz-navy), var(--blazers-black));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .transition-banner::after {
+            content: "THE TRADE / NEW ERA";
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.1);
+            letter-spacing: 10px;
+        }
+
+        /* === EFEITOS DE ANIMAÇÃO === */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         PARTE 1: ERA MEMPHIS GRIZZLIES
+         ========================================== -->
+
+    <!-- SEÇÃO HERO (INÍCIO) -->
+    <section class="theme-grizzlies" id="inicio">
+        <div class="content-wrapper">
+            <div class="text-box fade-in">
+                <h1>JA MORANT</h1>
+                <p>Explosão. Visão. Liderança. Desde o momento em que pisou na quadra por Murray State, até se tornar o Novato do Ano e colocar Memphis no mapa novamente com a cultura "Grit and Grind".</p>
+                <!-- SUBSTITUA O '#' PELO SEU LINK -->
+                <a href="#" class="btn">[LINK PARA HIGHLIGHTS AQUI]</a>
+            </div>
+            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
+            <!-- <img src="sua-imagem-grizzlies.jpg" alt="Ja Morant Grizzlies"> -->
+            <div class="image-placeholder fade-in">
+                [IMAGEM JA MORANT GRIZZLIES]
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE A VIDA -->
+    <section class="theme-grizzlies" id="sobre">
+        <div class="content-wrapper" style="flex-direction: row-reverse;">
+            <div class="text-box fade-in">
+                <h2>O Garoto de Dalzell</h2>
+                <p>Treinando no quintal criado por seu pai, Ja provou que não importa de onde você vem, mas sim a altura do seu salto e o tamanho do seu coração. De "unranked" no ensino médio para a 2ª escolha geral do Draft da NBA.</p>
+                <!-- SUBSTITUA O '#' PELO SEU LINK -->
+                <a href="#" class="btn">[LINK PARA ENTREVISTA/HISTÓRIA]</a>
+            </div>
+            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
+            <div class="image-placeholder fade-in">
+                [IMAGEM INFÂNCIA/COLLEGE AQUI]
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         A TRANSIÇÃO DRAMÁTICA
+         ========================================== -->
+    <div class="transition-banner"></div>
+
+
+    <!-- ==========================================
+         PARTE 2: NOVA ERA - PORTLAND TRAIL BLAZERS
+         ========================================== -->
+
+    <!-- SEÇÃO NOVA EQUIPE -->
+    <section class="theme-blazers" id="nova-era">
+        <div class="content-wrapper">
+            <div class="text-box fade-in">
+                <h2>RIP CITY: O Novo Capítulo</h2>
+                <p>Uma nova jersey, a mesma mentalidade assassina. Chegando em Portland para reescrever a história e trazer o fogo de volta ao Moda Center. O número 12 agora brilha em Vermelho e Preto.</p>
+                <!-- SUBSTITUA O '#' PELO SEU LINK -->
+                <a href="#" class="btn">[LINK PARA CAMISA/ANÚNCIO AQUI]</a>
+            </div>
+            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
+            <div class="image-placeholder fade-in" style="border-color: var(--blazers-red);">
+                [IMAGEM JA MORANT BLAZERS AQUI]
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO O FUTURO -->
+    <section class="theme-blazers" id="futuro">
+        <div class="content-wrapper" style="flex-direction: row-reverse;">
+            <div class="text-box fade-in">
+                <h2>Pronto Para o Topo</h2>
+                <p>Unindo forças com o elenco jovem e faminto dos Blazers, o objetivo de Ja agora é um só: O Campeonato. Preparem-se para enterradas absurdas e passes no blind-side que vão levantar o Oregon.</p>
+                <!-- SUBSTITUA O '#' PELO SEU LINK -->
+                <a href="#" class="btn">[LINK REDE SOCIAL OU VÍDEO FINAL]</a>
+            </div>
+            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
+            <div class="image-placeholder fade-in" style="border-color: var(--blazers-red);">
+                [IMAGEM ACTION BLAZERS AQUI]
+            </div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT PARA ANIMAÇÃO DE ROLAGEM -->
+    <script>
+        // Esse código simples faz as coisas aparecerem suavemente quando você rola a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 }); // Dispara quando 10% do elemento aparece
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
