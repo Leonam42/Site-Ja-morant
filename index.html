@@ -56,23 +56,24 @@
             position: relative;
         }
 
-        /* LAYOUT SPLIT */
+        /* LAYOUT SPLIT EXPANDIDO */
         .split-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 0.85fr 1.15fr; /* Mais espaço pra coluna do Ja Morant */
+            gap: 20px;
             align-items: start; 
         }
 
         .left-content {
-            padding-bottom: 120px; /* Mantém o respiro apenas no lado do texto */
+            padding-bottom: 120px;
             position: relative;
-            z-index: 10; /* Garante que o texto fique por cima se a imagem crescer muito */
+            z-index: 10; /* Texto sempre visível sobre a imagem se houver sobreposição */
         }
 
         .right-content {
             position: relative;
             z-index: 5;
+            height: 100%;
         }
 
         .badge-blue { color: var(--accent-blue); font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; display: inline-block; margin-bottom: 12px; }
@@ -111,24 +112,27 @@
         .watch-tag { margin-top: 10px; font-size: 0.75rem; font-weight: 700; color: #fff; text-transform: uppercase; opacity: 0.8; }
 
         /* =========================================
-           LADO DIREITO: IMAGEM GIGANTE E ENRAIZADA
+           LADO DIREITO: JA MORANT GIGANTESCO
            ========================================= */
         .image-sticky-wrapper {
             position: sticky;
             top: 0; 
-            height: 100vh; /* Pega a tela toda */
+            height: 100vh;
             display: flex;
             justify-content: flex-end;
-            align-items: flex-end; /* Cola a imagem totalmente no chão */
+            align-items: flex-end;
+            overflow: visible; /* Permite expansão total */
         }
 
         .full-body-img {
-            height: 96vh; /* Usa 96% da altura (espaço pra cabeça) */
-            width: 140%; /* Deixa a imagem vazar a coluna e ficar colossal */
+            height: 97vh; /* Ocupa quase 100% da altura da tela */
+            width: auto;
             max-width: none;
             object-fit: contain; 
-            object-position: bottom right; /* Crava o pé no canto */
-            filter: drop-shadow(0 0 40px rgba(56, 189, 248, 0.25));
+            object-position: bottom right; /* Ancorado exatamente no chão da direita */
+            transform: scale(1.4); /* ZOOM COLOSSAL */
+            transform-origin: bottom right; /* Cresce a partir da base e do canto direito */
+            filter: drop-shadow(-30px 0 60px rgba(56, 189, 248, 0.35));
         }
 
         /* =========================================
@@ -143,6 +147,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
+            z-index: 20;
         }
 
         .carousel-wrapper {
@@ -266,6 +272,7 @@
         @media (max-width: 900px) {
             .split-layout { grid-template-columns: 1fr; }
             .image-sticky-wrapper { position: relative; top: 0; height: 600px; margin-top: 40px; overflow: visible; }
+            .full-body-img { transform: scale(1); }
             .btn-prev { left: 0; } .btn-next { right: 0; }
             .carousel-item { width: 300px; }
             .carousel-item.prev { transform: scale(0.85) translateX(-60%); }
@@ -326,7 +333,7 @@
                 </div>
             </div>
 
-            <!-- LADO DIREITO: IMAGEM GIGANTE E FIXA (ENRAIZADA NO CHÃO) -->
+            <!-- LADO DIREITO: IMAGEM MONSTRUOSA -->
             <div class="right-content">
                 <div class="image-sticky-wrapper">
                     <img src="jamorant.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
