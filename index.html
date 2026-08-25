@@ -56,12 +56,12 @@
             position: relative;
         }
 
-        /* LAYOUT SPLIT: ESQUERDA ROLA, DIREITA FICA FIXA */
+        /* LAYOUT SPLIT: ESQUERDA ROLA, DIREITA FICA FIXA E MAIOR */
         .split-layout {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1fr 1fr; /* Dividido igualmente para a imagem crescer */
             gap: 40px;
-            align-items: start; /* Para o sticky funcionar */
+            align-items: start; 
         }
 
         .badge-blue { color: var(--accent-blue); font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; display: inline-block; margin-bottom: 12px; }
@@ -76,9 +76,9 @@
         .stat-box h4 { font-size: 1.8rem; color: var(--accent-blue); }
         .stat-box p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
 
-        /* HABILIDADES (Lado Esquerdo) */
+        /* HABILIDADES */
         .section-title { font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 30px; }
-        .flashcards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .flashcards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         
         .flash-card {
             position: relative; height: 380px; border-radius: 16px; overflow: hidden;
@@ -99,111 +99,143 @@
         .flash-card .blur-overlay p { color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; }
         .watch-tag { margin-top: 10px; font-size: 0.75rem; font-weight: 700; color: #fff; text-transform: uppercase; opacity: 0.8; }
 
-        /* LADO DIREITO: IMAGEM FIXA (STICKY) */
+        /* LADO DIREITO: IMAGEM MAIOR E FIXA */
         .image-sticky-wrapper {
             position: sticky;
-            top: 120px; /* Fixa 120px do topo da tela enquanto o texto rola */
-            height: 80vh; /* Ocupa 80% da altura da tela */
+            top: 5vh; 
+            height: 90vh; /* Ocupa 90% da altura da tela para ficar gigante */
             display: flex;
             justify-content: center;
-            align-items: center;
-        }
-
-        .image-container {
-            position: relative;
-            height: 100%;
-            display: flex;
-            justify-content: center;
+            align-items: flex-end;
         }
 
         .full-body-img {
             height: 100%;
-            width: auto;
+            width: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.15));
+            filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.2));
+            transform: scale(1.05); /* Um pequeno zoom extra nativo */
         }
 
-        /* ÁREA INVISÍVEL DOS TÊNIS (HITBOX) */
-        .shoe-hitbox {
-            position: absolute;
-            bottom: 2%; /* Fica na base da imagem (onde estão os pés) */
-            left: 20%;
-            width: 60%;
-            height: 20%; /* Cobre os últimos 20% da imagem */
-            cursor: pointer;
-            z-index: 10;
-            text-decoration: none;
-            /* Descomente a linha abaixo se quiser ver onde a caixa está para ajustar */
-            /* border: 1px solid red; */ 
-        }
-
-        /* Efeito de brilho suave ao passar o mouse no tênis */
-        .shoe-hitbox:hover::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(56,189,248,0.2) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* POPOVER DO TÊNIS */
-        .sneaker-popover {
-            position: absolute;
-            bottom: 100%; /* Aparece logo acima do tênis */
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            width: 240px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            backdrop-filter: blur(12px);
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
-        }
-
-        .shoe-hitbox:hover .sneaker-popover {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .sneaker-popover h4 { font-size: 1rem; color: var(--accent-blue); margin-bottom: 5px; }
-        .sneaker-popover p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; }
-        .popover-btn {
-            display: inline-block; padding: 8px 16px; background: var(--accent-blue);
-            color: #000; font-weight: 700; font-size: 0.75rem; border-radius: 6px; text-transform: uppercase;
-        }
-
-        /* SEÇÃO DE TÊNIS (NOVA) */
+        /* NOVA SEÇÃO DE TÊNIS (CARROSSEL ROTATIVO 3D) */
         .section-sneakers {
-            padding: 100px 6%;
+            padding: 100px 0;
             background: var(--bg-sneakers);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .sneaker-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .sneaker-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            transition: transform 0.3s;
         }
-        .sneaker-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
-        .sneaker-img-placeholder { height: 160px; background: rgba(0,0,0,0.3); border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 0.9rem; }
-        .sneaker-card h3 { color: var(--accent-blue); font-size: 1.3rem; margin-bottom: 10px; }
-        .sneaker-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 450px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 320px;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            z-index: 1;
+            transform: scale(0.7) translateX(0);
+            pointer-events: none; /* Evita clicar nos do fundo */
+        }
+
+        /* Efeito de Zoom (Meio) */
+        .carousel-item.active {
+            opacity: 1;
+            z-index: 10;
+            transform: scale(1.1) translateX(0); /* Fica maior no centro */
+            pointer-events: auto;
+            filter: brightness(1);
+        }
+
+        /* Tênis da Esquerda (Fundo) */
+        .carousel-item.prev {
+            opacity: 0.5;
+            z-index: 5;
+            transform: scale(0.8) translateX(-70%); /* Vai pra esquerda e diminui */
+            filter: brightness(0.6) blur(2px);
+        }
+
+        /* Tênis da Direita (Fundo) */
+        .carousel-item.next {
+            opacity: 0.5;
+            z-index: 5;
+            transform: scale(0.8) translateX(70%); /* Vai pra direita e diminui */
+            filter: brightness(0.6) blur(2px);
+        }
+
+        .sneaker-img-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(0, 0, 0, 0.5));
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .carousel-item h3 { color: var(--accent-blue); font-size: 1.5rem; margin-bottom: 8px; }
+        
+        /* Limite de 2 linhas exatas para a descrição */
+        .carousel-item p { 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Corta o texto na 2ª linha */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            padding: 0 10px;
+        }
+
+        /* Botões do Carrossel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-btn:hover { background: var(--accent-blue); color: #000; border-color: var(--accent-blue); }
+        .btn-prev { left: 5%; }
+        .btn-next { right: 5%; }
 
         /* DIVISOR DE TRANSIÇÃO */
         .transition-divider { padding: 100px 6%; text-align: center; background: linear-gradient(180deg, var(--bg-sneakers) 0%, var(--bg-blazers) 100%); }
@@ -219,6 +251,7 @@
         @media (max-width: 900px) {
             .split-layout { grid-template-columns: 1fr; }
             .image-sticky-wrapper { position: relative; top: 0; height: 500px; margin-top: 40px; }
+            .btn-prev { left: 0; } .btn-next { right: 0; }
         }
     </style>
 </head>
@@ -228,17 +261,15 @@
         <div class="logo">JA 12</div>
         <nav>
             <a href="#grizzlies">Grizzlies Era</a>
-            <a href="#sneakers">Sneakers</a>
+            <a href="#sneakers">Kicks</a>
             <a href="#blazers">Blazers Chapter</a>
         </nav>
     </header>
 
     <!-- PARTE 1: ERA GRIZZLIES -->
     <section class="section-grizzlies" id="grizzlies">
-        
         <div class="split-layout">
-            
-            <!-- LADO ESQUERDO: TEXTO E HABILIDADES (ROLA NORMALMENTE) -->
+            <!-- LADO ESQUERDO: TEXTO -->
             <div class="left-content">
                 <span class="badge-blue">Chapter I • Origin & Rise</span>
                 <h1 class="hero-title">O VOO DE MEMPHIS</h1>
@@ -252,13 +283,11 @@
                     <div class="stat-box"><h4>2x</h4><p>All-Star</p></div>
                 </div>
 
-                <!-- HABILIDADES (Subiu para substituir a aba de história) -->
                 <div class="habilidades-container">
                     <span class="badge-blue">Highlight Reel</span>
                     <h2 class="section-title">HABILIDADES DE ELITE</h2>
-
                     <div class="flashcards-grid">
-                        <a href="https://www.youtube.com/results?search_query=ja+morant+best+dunks" target="_blank" class="flash-card">
+                        <a href="#" class="flash-card">
                             <div class="card-bg">[ IMAGEM: DUNKS ]</div>
                             <div class="blur-overlay">
                                 <h3>Poster Dunks</h3>
@@ -266,8 +295,7 @@
                                 <span class="watch-tag">Assistir lances ↗</span>
                             </div>
                         </a>
-
-                        <a href="https://www.youtube.com/results?search_query=ja+morant+best+crossovers" target="_blank" class="flash-card">
+                        <a href="#" class="flash-card">
                             <div class="card-bg">[ IMAGEM: HANDLES ]</div>
                             <div class="blur-overlay">
                                 <h3>Fast Crossovers</h3>
@@ -275,63 +303,51 @@
                                 <span class="watch-tag">Assistir lances ↗</span>
                             </div>
                         </a>
-
-                        <a href="https://www.youtube.com/results?search_query=ja+morant+acrobatic+layups" target="_blank" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: PLAYS ]</div>
-                            <div class="blur-overlay">
-                                <h3>Acrobatic Finishes</h3>
-                                <p>Controle corporal no ar contra contatos fortes.</p>
-                                <span class="watch-tag">Assistir lances ↗</span>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- LADO DIREITO: IMAGEM FIXA (STICKY) -->
+            <!-- LADO DIREITO: IMAGEM GIGANTE E FIXA -->
             <div class="right-content">
                 <div class="image-sticky-wrapper">
-                    <div class="image-container">
-                        <!-- Imagem do Ja Morant -->
-                        <img src="jamorant.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
-                        
-                        <!-- ÁREA INVISÍVEL DOS TÊNIS (HITBOX) -->
-                        <a href="#sneakers" class="shoe-hitbox">
-                            <div class="sneaker-popover">
-                                <h4>Descubra os Tênis</h4>
-                                <p>Clique para ver a linha exclusiva Nike Ja Morant.</p>
-                                <span class="popover-btn">Ver Coleção</span>
-                            </div>
-                        </a>
-                    </div>
+                    <img src="jamorant.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- NOVA SEÇÃO DE TÊNIS -->
+    <!-- SEÇÃO TÊNIS (CARROSSEL ROTATIVO) -->
     <section class="section-sneakers" id="sneakers">
         <span class="badge-blue">Signature Shoes</span>
-        <h2 class="section-title" style="margin-bottom: 10px;">NIKE JA COLLECTION</h2>
-        <p style="color: var(--text-muted); max-width: 600px; line-height: 1.6;">Projetados para explosão, cortes rápidos e aterrissagens seguras. Uma das linhas mais cobiçadas das quadras.</p>
+        <h2 class="section-title">NIKE JA COLLECTION</h2>
+        
+        <div class="carousel-wrapper">
+            <button class="carousel-btn btn-prev" onclick="moveCarousel(-1)">❮</button>
+            
+            <div class="carousel-track" id="track">
+                <div class="carousel-item">
+                    <div class="sneaker-img-placeholder">[ FOTO JA 1 ]</div>
+                    <h3>Nike Ja 1</h3>
+                    <p>O modelo de estreia brutal. Amortecimento ágil e tração severa para cortes perfeitos.</p>
+                </div>
+                <div class="carousel-item">
+                    <div class="sneaker-img-placeholder">[ FOTO JA 2 ]</div>
+                    <h3>Nike Ja 2</h3>
+                    <p>Suporte extra no calcanhar para absorção de impacto após enterradas monstruosas.</p>
+                </div>
+                <div class="carousel-item">
+                    <div class="sneaker-img-placeholder">[ FOTO JA 3 ]</div>
+                    <h3>Nike Ja 3</h3>
+                    <p>Design respirável e agressivo, refletindo o estilo de rua nas quadras profissionais.</p>
+                </div>
+                <div class="carousel-item">
+                    <div class="sneaker-img-placeholder">[ FOTO JA 4 ]</div>
+                    <h3>Nike Ja 4</h3>
+                    <p>A evolução máxima da linha. Mais leveza e placa de propulsão para o primeiro passo.</p>
+                </div>
+            </div>
 
-        <div class="sneaker-grid">
-            <div class="sneaker-card">
-                <div class="sneaker-img-placeholder">[ FOTO JA 1 ]</div>
-                <h3>Nike Ja 1</h3>
-                <p>O modelo de estreia. Amortecimento ágil e tração severa para mudanças de direção.</p>
-            </div>
-            <div class="sneaker-card">
-                <div class="sneaker-img-placeholder">[ FOTO JA 2 ]</div>
-                <h3>Nike Ja 2</h3>
-                <p>Suporte aprimorado no calcanhar para absorção de impacto após enterradas monstruosas.</p>
-            </div>
-            <div class="sneaker-card">
-                <div class="sneaker-img-placeholder">[ FOTO JA 3 ]</div>
-                <h3>Nike Ja 3</h3>
-                <p>Design respirável e agressivo, refletindo o estilo de rua nas quadras profissionais.</p>
-            </div>
+            <button class="carousel-btn btn-next" onclick="moveCarousel(1)">❯</button>
         </div>
     </section>
 
@@ -349,7 +365,7 @@
         </p>
 
         <div class="flashcards-grid">
-            <a href="https://www.youtube.com/results?search_query=ja+morant+highlights" target="_blank" class="flash-card blazers-card">
+            <a href="#" class="flash-card blazers-card">
                 <div class="card-bg">[ IMAGEM: BLAZERS ERA ]</div>
                 <div class="blur-overlay">
                     <h3>Liderança de Elenco</h3>
@@ -357,17 +373,39 @@
                     <span class="watch-tag" style="color: var(--accent-red);">Assistir visão ↗</span>
                 </div>
             </a>
-
-            <a href="https://www.youtube.com/results?search_query=ja+morant+training" target="_blank" class="flash-card blazers-card">
-                <div class="card-bg">[ IMAGEM: FÍSICO / PREPARO ]</div>
-                <div class="blur-overlay">
-                    <h3>Resistência Física</h3>
-                    <p>Adaptação do estilo de jogo para preservar as articulações.</p>
-                    <span class="watch-tag" style="color: var(--accent-red);">Assistir preparação ↗</span>
-                </div>
-            </a>
         </div>
     </section>
 
+    <!-- SCRIPT DO CARROSSEL DE TÊNIS -->
+    <script>
+        const items = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        function updateCarousel() {
+            // Remove todas as classes de estado primeiro
+            items.forEach(item => {
+                item.classList.remove('active', 'prev', 'next');
+            });
+
+            // Lógica para descobrir quem está na esquerda, centro e direita
+            let prevIndex = (currentIndex - 1 + totalItems) % totalItems;
+            let nextIndex = (currentIndex + 1) % totalItems;
+
+            // Aplica as classes
+            items[currentIndex].classList.add('active');
+            items[prevIndex].classList.add('prev');
+            items[nextIndex].classList.add('next');
+        }
+
+        // Função para mover pelos botões
+        function moveCarousel(direction) {
+            currentIndex = (currentIndex + direction + totalItems) % totalItems;
+            updateCarousel();
+        }
+
+        // Inicializa o visual
+        updateCarousel();
+    </script>
 </body>
 </html>
