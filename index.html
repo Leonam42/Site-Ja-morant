@@ -50,7 +50,7 @@
 
         /* SEÇÃO 1: GRIZZLIES ERA */
         .section-grizzlies {
-            padding: 130px 6% 0; /* Zerado embaixo pro pé encostar na linha */
+            padding: 130px 6% 0;
             background: var(--bg-grizzlies);
             background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 45%);
             position: relative;
@@ -59,7 +59,7 @@
         /* LAYOUT SPLIT EXPANDIDO */
         .split-layout {
             display: grid;
-            grid-template-columns: 0.85fr 1.15fr; /* Mais espaço pra coluna do Ja Morant */
+            grid-template-columns: 0.85fr 1.15fr;
             gap: 20px;
             align-items: start; 
         }
@@ -67,7 +67,7 @@
         .left-content {
             padding-bottom: 120px;
             position: relative;
-            z-index: 10; /* Texto sempre visível sobre a imagem se houver sobreposição */
+            z-index: 10;
         }
 
         .right-content {
@@ -111,9 +111,7 @@
         .flash-card .blur-overlay p { color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; }
         .watch-tag { margin-top: 10px; font-size: 0.75rem; font-weight: 700; color: #fff; text-transform: uppercase; opacity: 0.8; }
 
-        /* =========================================
-           LADO DIREITO: JA MORANT GIGANTESCO
-           ========================================= */
+        /* LADO DIREITO: JA MORANT GIGANTESCO */
         .image-sticky-wrapper {
             position: sticky;
             top: 0; 
@@ -121,23 +119,21 @@
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
-            overflow: visible; /* Permite expansão total */
+            overflow: visible;
         }
 
         .full-body-img {
-            height: 97vh; /* Ocupa quase 100% da altura da tela */
+            height: 97vh;
             width: auto;
             max-width: none;
             object-fit: contain; 
-            object-position: bottom right; /* Ancorado exatamente no chão da direita */
-            transform: scale(1.4); /* ZOOM COLOSSAL */
-            transform-origin: bottom right; /* Cresce a partir da base e do canto direito */
+            object-position: bottom right;
+            transform: scale(1.4);
+            transform-origin: bottom right;
             filter: drop-shadow(-30px 0 60px rgba(56, 189, 248, 0.35));
         }
 
-        /* =========================================
-           SEÇÃO TÊNIS (CARROSSEL ROTATIVO EXPANDIDO)
-           ========================================= */
+        /* SEÇÃO TÊNIS */
         .section-sneakers {
             padding: 120px 0;
             background: var(--bg-sneakers);
@@ -181,7 +177,6 @@
             pointer-events: none;
         }
 
-        /* Tênis Central */
         .carousel-item.active {
             opacity: 1;
             z-index: 10;
@@ -190,7 +185,6 @@
             filter: brightness(1);
         }
 
-        /* Tênis Esquerda */
         .carousel-item.prev {
             opacity: 0.4;
             z-index: 5;
@@ -198,7 +192,6 @@
             filter: brightness(0.5) blur(3px);
         }
 
-        /* Tênis Direita */
         .carousel-item.next {
             opacity: 0.4;
             z-index: 5;
@@ -233,7 +226,6 @@
             padding: 0 15px;
         }
 
-        /* Botões do Carrossel */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -313,22 +305,47 @@
                     <span class="badge-blue">Highlight Reel</span>
                     <h2 class="section-title">HABILIDADES DE ELITE</h2>
                     <div class="flashcards-grid">
-                        <a href="#" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: DUNKS ]</div>
+                        
+                        <!-- CARD 1: POSTERS -->
+                        <a href="#link-posters" class="flash-card">
+                            <div class="card-bg">[ IMAGEM: POSTERS ]</div>
                             <div class="blur-overlay">
-                                <h3>Poster Dunks</h3>
+                                <h3>Posters</h3>
                                 <p>Impulsão vertical sem medo de protetores de aro.</p>
                                 <span class="watch-tag">Assistir lances ↗</span>
                             </div>
                         </a>
-                        <a href="#" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: HANDLES ]</div>
+                        
+                        <!-- CARD 2: ENTERRADAS -->
+                        <a href="#link-enterradas" class="flash-card">
+                            <div class="card-bg">[ IMAGEM: ENTERRADAS ]</div>
                             <div class="blur-overlay">
-                                <h3>Fast Crossovers</h3>
-                                <p>Mudanças de direção que quebram defesas.</p>
+                                <h3>Enterradas</h3>
+                                <p>Ataques ferozes e acrobáticos em direção à cesta.</p>
                                 <span class="watch-tag">Assistir lances ↗</span>
                             </div>
                         </a>
+                        
+                        <!-- CARD 3: BEST PLAYS -->
+                        <a href="#link-best-plays" class="flash-card">
+                            <div class="card-bg">[ IMAGEM: BEST PLAYS ]</div>
+                            <div class="blur-overlay">
+                                <h3>Best Plays</h3>
+                                <p>Os momentos mais eletrizantes e inesquecíveis em quadra.</p>
+                                <span class="watch-tag">Assistir lances ↗</span>
+                            </div>
+                        </a>
+                        
+                        <!-- CARD 4: BAG WORK -->
+                        <a href="#link-bag-work" class="flash-card">
+                            <div class="card-bg">[ IMAGEM: BAG WORK ]</div>
+                            <div class="blur-overlay">
+                                <h3>Bag Work</h3>
+                                <p>Controle de bola e movimentos imprevisíveis quebrando defesas.</p>
+                                <span class="watch-tag">Assistir lances ↗</span>
+                            </div>
+                        </a>
+                        
                     </div>
                 </div>
             </div>
@@ -343,7 +360,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO TÊNIS (CARROSSEL EXPANDIDO) -->
+    <!-- SEÇÃO TÊNIS -->
     <section class="section-sneakers" id="sneakers">
         <span class="badge-blue">Signature Shoes</span>
         <h2 class="section-title">NIKE JA COLLECTION</h2>
