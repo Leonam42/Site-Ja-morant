@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ja Morant | A Jornada do Atleta</title>
+    <title>Ja Morant | The Evolution</title>
 
+    <!-- FONTE URBAN SPORTS & EDITORIAL -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
@@ -14,65 +15,75 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #07090e;
+            background-color: #05070c;
             color: #f8fafc;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            width: 100vw;
-            transition: background-color 1s ease;
         }
 
-        
+        /* === EFEITO DE NUVENS (TRANSIÇÃO) === */
         #cloud-overlay {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle, #ffffff 15%, #cbd5e1 50%, #94a3b8 100%);
+            background: radial-gradient(circle, #ffffff 20%, #bae6fd 60%, #38bdf8 100%);
             opacity: 0;
             pointer-events: none;
-            z-index: 9999;
-            transform: scale(0.7) translateY(100%);
-            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-            filter: blur(30px);
+            z-index: 99999;
+            transform: translateY(100%) scale(0.8);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.6s ease;
+            filter: blur(25px);
         }
 
         #cloud-overlay.active {
             opacity: 1;
-            transform: scale(1.4) translateY(0);
+            pointer-events: all;
+            transform: translateY(0) scale(1.3);
         }
 
-        /* === SLIDER DE NAVEGAÇÃO HORIZONTAL === */
-        .viewport-slider {
+        /* === HEADER / NAV === */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
             display: flex;
-            width: 200vw;
-            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(5, 7, 12, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .viewport-slider.slide-blazers {
-            transform: translateX(-100vw);
-        }
-
-        .era-panel {
-            width: 100vw;
-            min-height: 100vh;
-            padding: 60px 8% 120px;
-            flex-shrink: 0;
-            box-sizing: border-box;
-        }
-
-        /* === ESTILOS E TEMAS DE FUNDO DIVERSOS === */
-        .grizzlies-theme { background: #060911; }
-        .blazers-theme { background: #080304; }
-
-        h1, h2, h3 {
+        .logo {
             font-family: 'Syne', sans-serif;
-            text-transform: uppercase;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #fff;
         }
 
-        .section-badge {
-            color: #60a5fa;
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #38bdf8; }
+
+        /* === SEÇÃO REUTILIZÁVEL === */
+        section {
+            padding: 120px 8% 80px;
+            position: relative;
+        }
+
+        .badge {
+            color: #38bdf8;
             font-weight: 700;
             letter-spacing: 3px;
             font-size: 0.85rem;
@@ -81,91 +92,139 @@
             display: block;
         }
 
-        /* NAVEGAÇÃO DE TOPO */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 30px;
-            margin-bottom: 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            text-transform: uppercase;
         }
 
-        header .brand {
-            font-size: 1.8rem;
-            font-weight: 900;
+        /* === ERA GRIZZLIES (FUNDO DARK NEON BLUE) === */
+        #grizzlies-era {
+            background: #05070c;
+            background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 70%, rgba(29, 78, 216, 0.1) 0%, transparent 40%);
         }
 
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: #fff; }
-
-        /* HERO EDITORIAL */
         .hero {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
-            margin-bottom: 140px;
+            min-height: 80vh;
         }
 
         .hero-text h1 {
-            font-size: clamp(3.5rem, 6vw, 6rem);
+            font-size: clamp(3.5rem, 6vw, 5.8rem);
             line-height: 0.95;
             margin-bottom: 25px;
-            letter-spacing: -2px;
+            color: #ffffff;
         }
 
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             line-height: 1.8;
             color: #94a3b8;
             margin-bottom: 35px;
             font-weight: 300;
         }
 
-        /* CARDS DE HISTÓRIA E CONQUISTAS */
-        .history-grid {
+        /* === HISTÓRIA E ORIGENS === */
+        .origins-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 140px;
+            margin: 50px 0 100px;
         }
 
-        .info-card {
+        .history-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
-            padding: 40px;
+            padding: 35px;
             backdrop-filter: blur(10px);
         }
 
-        .info-card h3 {
-            font-size: 1.8rem;
+        .history-card h3 {
+            font-size: 1.6rem;
+            color: #38bdf8;
             margin-bottom: 15px;
-            color: #60a5fa;
         }
 
-        .info-card p {
+        .history-card p {
             color: #94a3b8;
             line-height: 1.7;
         }
 
-        /* === SEÇÃO DOS TÊNIS (SNEAKERS SECTION) === */
-        .sneakers-section {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 60px 40px;
-            margin-bottom: 140px;
+        /* === FLASH CARDS COM BLUR ATÉ A METADE === */
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0 100px;
         }
 
-        .sneakers-grid {
+        .flash-card {
+            position: relative;
+            height: 460px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .flash-card:hover { transform: translateY(-8px); }
+
+        .flash-card .card-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 50px;
+            justify-content: center;
+            color: #475569;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* O BLUR DA METADE DA IMAGEM */
+        .flash-card .half-blur-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%; /* Cobrindo até a metade */
+            background: rgba(5, 7, 12, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flash-card .half-blur-overlay h3 {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .flash-card .half-blur-overlay p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* === LINHA DE TÊNIS (JA 1 AO JA 4) === */
+        .sneaker-section {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin: 50px 0 100px;
+        }
+
+        .sneaker-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
@@ -174,27 +233,16 @@
 
         .sneaker-card {
             background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 25px;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .sneaker-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .sneaker-card .img-placeholder {
-            height: 180px;
-            margin-bottom: 20px;
         }
 
         .sneaker-card h4 {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
             color: #38bdf8;
+            font-size: 1.4rem;
+            margin: 15px 0 10px;
         }
 
         .sneaker-card p {
@@ -203,98 +251,67 @@
             line-height: 1.5;
         }
 
-        /* === FLASH CARDS DE HABILIDADES COM BLUR ATÉ A METADE === */
-        .flashcards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-            margin-bottom: 140px;
-        }
-
-        .flash-card {
-            position: relative;
-            height: 480px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .flash-card .card-bg-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: flex-start;
-            padding-top: 60px;
-            justify-content: center;
-            color: #475569;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* BLUR SUBINDO ATÉ A METADE DA IMAGEM */
-        .flash-card .blur-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 52%; /* Sobrescreve metade da imagem */
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: background 0.4s ease, transform 0.4s ease;
-        }
-
-        .flash-card:hover .blur-overlay {
-            background: rgba(15, 23, 42, 0.85);
-            transform: translateY(-5px);
-        }
-
-        .flash-card .blur-overlay h3 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-        }
-
-        .grizzlies-theme .flash-card .blur-overlay h3 { color: #60a5fa; }
-        .blazers-theme .flash-card .blur-overlay h3 { color: #ef4444; }
-
-        .flash-card .blur-overlay p {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* SEÇÃO DE TURBULÊNCIAS */
+        /* === SEÇÃO TURBULÊNCIAS === */
         .troubles-box {
             background: rgba(239, 68, 68, 0.05);
             border-left: 5px solid #ef4444;
-            padding: 50px;
-            border-radius: 0 20px 20px 0;
-            margin-bottom: 140px;
+            padding: 40px;
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 80px;
         }
 
         .troubles-box h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #ef4444;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .troubles-box p {
             color: #cbd5e1;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.8;
-            max-width: 900px;
         }
 
-        /* PLACEHOLDERS DE IMAGENS */
+        /* === GATILHO "A NEW JA?" === */
+        .sky-trigger-area {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .sky-btn {
+            background: transparent;
+            border: none;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 900;
+            color: #ffffff;
+            cursor: pointer;
+            letter-spacing: -1px;
+            transition: all 0.3s ease;
+        }
+
+        .sky-btn:hover {
+            color: #e03a3e;
+            text-shadow: 0 0 35px rgba(224, 58, 62, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* === ERA PORTLAND TRAIL BLAZERS (FUNDO RED NEON) === */
+        #blazers-era {
+            background: #080304;
+            background-image: radial-gradient(circle at 80% 20%, rgba(224, 58, 62, 0.18) 0%, transparent 45%),
+                              radial-gradient(circle at 20% 80%, rgba(153, 27, 27, 0.12) 0%, transparent 45%);
+            border-top: 1px solid rgba(224, 58, 62, 0.2);
+        }
+
+        #blazers-era .badge { color: #e03a3e; }
+
+        #blazers-era .flash-card .half-blur-overlay h3 { color: #e03a3e; }
+
+        /* PLACEHOLDERS DE FOTO */
         .img-placeholder {
             width: 100%;
+            height: 380px;
             background: rgba(255, 255, 255, 0.02);
             border: 2px dashed rgba(255, 255, 255, 0.12);
             border-radius: 16px;
@@ -303,254 +320,211 @@
             justify-content: center;
             color: #64748b;
             font-weight: 600;
-        }
-
-        .hero .img-placeholder { height: 480px; }
-
-        /* GATILHO DA TRANSIÇÃO "A NEW JA?" */
-        .transition-trigger-container {
-            text-align: center;
-            padding: 80px 0 40px;
-        }
-
-        .trigger-text {
-            background: transparent;
-            border: none;
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 900;
-            color: #ffffff;
-            cursor: pointer;
-            letter-spacing: -1px;
-            transition: all 0.4s ease;
-            text-transform: lowercase;
-            display: inline-flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .trigger-text:hover {
-            color: #38bdf8;
-            text-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
-            transform: scale(1.03);
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; gap: 40px; }
-            .era-panel { padding: 40px 5% 80px; }
+            .hero { grid-template-columns: 1fr; }
+            section { padding: 100px 5% 60px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- OVERLAY DE NUVENS PARA A TRANSIÇÃO -->
+    <!-- OVERLAY NUVENS -->
     <div id="cloud-overlay"></div>
 
-    <div class="viewport-slider" id="mainSlider">
+    <!-- MENU DE NAVEGAÇÃO -->
+    <header>
+        <div class="logo">JA MORANT #12</div>
+        <nav>
+            <a href="#grizzlies-era">Origens</a>
+            <a href="#habilidades">Skills</a>
+            <a href="#tenis">Sneakers</a>
+            <a href="#blazers-era" style="color: #e03a3e;">Blazers Era</a>
+        </nav>
+    </header>
 
-        <!-- ================= PAINEL 1: NARRATIVA & GRIZZLIES ================= -->
-        <section class="era-panel grizzlies-theme">
-            <header>
-                <div class="brand">JA MORANT 🏀</div>
-                <nav>
-                    <a href="#origens">[ORIGENS]</a>
-                    <a href="#tenis">[SNEAKERS]</a>
-                    <a href="#habilidades">[SKILLS]</a>
-                    <a href="#turbulencia">[HISTÓRIA]</a>
-                </nav>
-            </header>
-
-            <!-- HERO EDITORIAL -->
-            <div class="hero">
-                <div class="hero-text">
-                    <span class="section-badge">DOCUMENTÁRIO BIOGRÁFICO</span>
-                    <h1>O VOO DE DALZELL</h1>
-                    <p>De uma quadra improvisada no quintal da Carolina do Sul até se tornar um dos atletas mais eletrizantes e dominantes da NBA moderna.</p>
-                    <a href="#" style="color: #60a5fa; font-weight: 700; text-decoration: none; font-size: 1.1rem;">[VER DOCUMENTÁRIO COMPLETO &rarr;]</a>
-                </div>
-                <div class="img-placeholder">[ESPAÇO: FOTO IMPACTANTE MEMPHIS / HIGHLIGHT]</div>
+    <!-- ========================================================
+         PARTE 1: NARRATIVA & MEMPHIS GRIZZLIES
+         ======================================================== -->
+    <section id="grizzlies-era">
+        
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-text">
+                <span class="badge">Biografia & Trajetória</span>
+                <h1>O ATLETA QUE DESAFIA A GRAVIDADE</h1>
+                <p>De uma quadra de terra no quintal da Carolina do Sul até o topo do basquete mundial. A história de superação, velocidade e jogadas inacreditáveis que marcaram uma era.</p>
             </div>
+            <div class="img-placeholder">[FOTO PRINCIPAL JA MORANT MEMPHIS]</div>
+        </div>
 
-            <!-- ORIGENS & ENSINO MÉDIO -->
-            <span class="section-badge" id="origens">CAPÍTULO I • AS ORIGENS</span>
-            <h2 style="font-size: 3rem; margin-bottom: 40px;">SEM RECONHECIMENTO AO TOPO</h2>
-            <div class="history-grid">
-                <div class="info-card">
-                    <h3>Ensino Médio & Dalzell</h3>
-                    <p>Não recrutado por grandes universidades, Ja treinava no quintal de casa saltando sobre pneus de trator com seu pai, Tee Morant, lapidando um estilo físico implacável.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Murray State Explosão</h3>
-                    <p>Descoberto por acaso em uma lanchonete por um olheiro, Morant dominou a NCAA registrando um Triplo-Duplo histórico no March Madness.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Draft & Rookie do Ano</h3>
-                    <p>Segunda escolha geral em 2019 pelo Memphis Grizzlies. Venceu o prêmio de Novato do Ano e levou a franquia de volta aos playoffs.</p>
-                </div>
+        <!-- ORIGENS & HISTÓRIA -->
+        <span class="badge">Capítulo I • As Raízes</span>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">FORJADO FORA DOS HOLOFOTES</h2>
+        <div class="origins-grid">
+            <div class="history-card">
+                <h3>Ensino Médio em Dalzell</h3>
+                <p>Sem convites de grandes universidades, Ja treinava no quintal de casa saltando sobre pneus de trator com seu pai Tee Morant, construindo uma força física absurda longe dos holofotes.</p>
             </div>
-
-            <!-- LINHA DE TÊNIS (JA 1, JA 2, JA 3, JA 4) -->
-            <div class="sneakers-section" id="tenis">
-                <span class="section-badge" style="color: #38bdf8;">ASSINATURA NIKE</span>
-                <h2 style="font-size: 2.8rem; color: #fff;">LINHA DE SNEAKERS</h2>
-                
-                <div class="sneakers-grid">
-                    <div class="sneaker-card">
-                        <div class="img-placeholder">[FOTO NIKE JA 1]</div>
-                        <h4>NIKE JA 1</h4>
-                        <p>O modelo de estreia. Focado em leveza extrema e tração multidirecional para cortes rápidos.</p>
-                    </div>
-                    <div class="sneaker-card">
-                        <div class="img-placeholder">[FOTO NIKE JA 2]</div>
-                        <h4>NIKE JA 2</h4>
-                        <p>Reforço lateral com unidade Zoom Air ampliada para aterragens pesadas pós-enterradas.</p>
-                    </div>
-                    <div class="sneaker-card">
-                        <div class="img-placeholder">[FOTO NIKE JA 3]</div>
-                        <h4>NIKE JA 3</h4>
-                        <p>Design futurista, estrutura em mesh ultra-respirável e suporte reforçado de tornozelo.</p>
-                    </div>
-                    <div class="sneaker-card">
-                        <div class="img-placeholder">[FOTO NIKE JA 4]</div>
-                        <h4>NIKE JA 4</h4>
-                        <p>A consolidação da assinatura. Amortecimento de alta performance para proteção de impacto.</p>
-                    </div>
-                </div>
+            <div class="history-card">
+                <h3>A Ascensão na NCAA</h3>
+                <p>Descoberto por acaso em Murray State, tornou-se o primeiro jogador na história da divisão universitária a ter média de 20 pontos e 10 assistências por jogo na mesma temporada.</p>
             </div>
+            <div class="history-card">
+                <h3>Conquistas na NBA</h3>
+                <p>Selecionado na 2ª escolha do Draft 2019. Vencedor do prêmio Rookie of the Year (Novato do Ano), Most Improved Player e 2x NBA All-Star liderando Memphis.</p>
+            </div>
+        </div>
 
-            <!-- FLASH CARDS DE HABILIDADES COM BLUR ATÉ A METADE -->
-            <span class="section-badge" id="habilidades">ANÁLISE DE JOGO</span>
-            <h2 style="font-size: 3rem; margin-bottom: 40px;">FLASH CARDS DE ELITE</h2>
+        <!-- FLASH CARDS DE HABILIDADES (COM BLUR NA METADE) -->
+        <span class="badge" id="habilidades">Análise Técnica</span>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">FLASH CARDS DE ELITE</h2>
+        <div class="flashcards-grid">
             
-            <div class="flashcards-container">
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO/VIDEO ENTERRADAS]</div>
-                    <div class="blur-overlay">
-                        <h3>Enterradas</h3>
-                        <p>Impulsão vertical violenta, capaz de posterizar protetores de aro com alcance acima da tabela.</p>
-                    </div>
-                </div>
-
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO/VIDEO HANDLES]</div>
-                    <div class="blur-overlay">
-                        <h3>Ball Handling</h3>
-                        <p>Hesitações imprevisíveis e trocas de direção em altíssima velocidade no en-route para a cesta.</p>
-                    </div>
-                </div>
-
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO/VIDEO PASSE]</div>
-                    <div class="blur-overlay">
-                        <h3>Visão de Jogo</h3>
-                        <p>Capacidade de passe no ar e assistências no blind-side que desmontam defesas em zona.</p>
-                    </div>
+            <div class="flash-card">
+                <div class="card-image">[FOTO OU VÍDEO DE ENTERRADA]</div>
+                <div class="half-blur-overlay">
+                    <h3>Enterradas</h3>
+                    <p>Impulsão vertical violenta, atacando o aro sem medo de qualquer protetor de elite da liga.</p>
                 </div>
             </div>
 
-            <!-- SEÇÃO DE TURBULÊNCIAS & LESÕES -->
-            <div class="troubles-box" id="turbulencia">
-                <h2>O CUSTO DA TURBULÊNCIA</h2>
-                <p>Lesões graves nos joelhos e ombro, suspensões severas aplicadas pela NBA, multas milionárias e controvérsias fora das quadras. A pressão do estrelato precipitado colocou em risco a continuação da sua carreira em Memphis.</p>
-            </div>
-
-         
-            <div class="transition-trigger-container">
-                <button class="trigger-text" id="toBlazers">a new Ja? <span>&rarr;</span></button>
-            </div>
-        </section>
-
-        <!-- ================= PAINEL 2: NOVA ERA (BLAZERS) ================= -->
-        <section class="era-panel blazers-theme" id="sky-section">
-            <button class="back-btn" id="toGrizzlies">&larr; Voltar para a Trajetória</button>
-
-            <header>
-                <div class="brand" style="color: #ef4444;">RIP CITY 🌹</div>
-                <nav>
-                    <a href="#">[REDENÇÃO]</a>
-                    <a href="#">[NOVO ELENCO]</a>
-                </nav>
-            </header>
-
-            <div class="hero">
-                <div class="hero-text">
-                    <span class="section-badge" style="color: #ef4444;">O NOVO CAPÍTULO</span>
-                    <h1 style="color: #ef4444;">ACIMA DAS NUVENS</h1>
-                    <p>Uma nova era em Vermelho e Preto. Deixando os fantasmas do passado para trás em busca da redenção e do topo da liga com o Portland Trail Blazers.</p>
-                    <a href="#" style="color: #ef4444; font-weight: 700; text-decoration: none; font-size: 1.1rem;">[ANÚNCIO OFICIAL BLAZERS &rarr;]</a>
-                </div>
-                <div class="img-placeholder" style="border-color: rgba(239, 68, 68, 0.4);">[FOTO JA MORANT BLAZERS ERA]</div>
-            </div>
-
-            <!-- FLASH CARDS BLAZERS ERA -->
-            <span class="section-badge" style="color: #ef4444;">ATITUDE RENOVAÇÃO</span>
-            <h2 style="font-size: 3rem; margin-bottom: 40px;">O NOVO PERFIL DE JOGO</h2>
-
-            <div class="flashcards-container">
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO BLAZERS TREINO]</div>
-                    <div class="blur-overlay">
-                        <h3>Foco Mental</h3>
-                        <p>Maturidade refinada dentro e fora da quadra com foco total em liderança.</p>
-                    </div>
-                </div>
-
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO PREPARO FÍSICO]</div>
-                    <div class="blur-overlay">
-                        <h3>Preservação Física</h3>
-                        <p>Treinos voltados para absorção de impacto e prevenção de lesões pesadas.</p>
-                    </div>
-                </div>
-
-                <div class="flash-card">
-                    <div class="card-bg-placeholder">[FOTO GAME WINNER BLAZERS]</div>
-                    <div class="blur-overlay">
-                        <h3>Modo Redenção</h3>
-                        <p>Motivação para colocar Portland no topo dos Playoffs e provar seu valor All-Star.</p>
-                    </div>
+            <div class="flash-card">
+                <div class="card-image">[FOTO DE DRIBLE / HANDLES]</div>
+                <div class="half-blur-overlay">
+                    <h3>Handles & Vel.</h3>
+                    <p>Primeiro passo imparável e trocas de direção explosivas que desmontam qualquer marcação.</p>
                 </div>
             </div>
-        </section>
 
-    </div>
+            <div class="flash-card">
+                <div class="card-image">[FOTO DE PASSE ACROBÁTICO]</div>
+                <div class="half-blur-overlay">
+                    <h3>Visão de Jogo</h3>
+                    <p>Passes acrobáticos no ar, assistências sem olhar e leitura instantânea de quadra.</p>
+                </div>
+            </div>
 
-    <!-- JAVASCRIPT: TRANSIÇÃO COM NUVENS E NAVEGAÇÃO -->
+        </div>
+
+        <!-- LINHA DE TÊNIS -->
+        <div class="sneaker-section" id="tenis">
+            <span class="badge">Nike Signature Line</span>
+            <h2 style="font-size: 2.8rem;">LINHA DE SNEAKERS</h2>
+            
+            <div class="sneaker-grid">
+                <div class="sneaker-card">
+                    <div class="img-placeholder" style="height: 150px;">[FOTO JA 1]</div>
+                    <h4>NIKE JA 1</h4>
+                    <p>Estreia da linha de assinatura. Focado em resposta rápida no solo e leveza máxima.</p>
+                </div>
+                <div class="sneaker-card">
+                    <div class="img-placeholder" style="height: 150px;">[FOTO JA 2]</div>
+                    <h4>NIKE JA 2</h4>
+                    <p>Amortecimento reforçado Air Zoom para aterragens pesadas pós-saltos verticais.</p>
+                </div>
+                <div class="sneaker-card">
+                    <div class="img-placeholder" style="height: 150px;">[FOTO JA 3]</div>
+                    <h4>NIKE JA 3</h4>
+                    <p>Estrutura de suporte lateral em mesh respirável para proteger cortes bruscos de direção.</p>
+                </div>
+                <div class="sneaker-card">
+                    <div class="img-placeholder" style="height: 150px;">[FOTO JA 4]</div>
+                    <h4>NIKE JA 4</h4>
+                    <p>Tecnologia de última geração combinando absorção de impacto com estética de rua.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEÇÃO TURBULÊNCIAS & DESAFIOS -->
+        <div class="troubles-box">
+            <h2>O CUSTO DA TURBULÊNCIA</h2>
+            <p>Lesões graves nos joelhos e ombros, aliadas a suspensões severas da NBA, multas pesadas e polêmicas fora de quadra. O peso do estrelato precoce testou os limites físicos e mentais de Ja Morant em Memphis.</p>
+        </div>
+
+        <!-- GATILHO DAS NUVENS PARA A SEGUNDA PARTE -->
+        <div class="sky-trigger-area">
+            <button class="sky-btn" id="skyTrigger">a new Ja? &rarr;</button>
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================
+         PARTE 2: A NOVA ERA - PORTLAND TRAIL BLAZERS
+         ======================================================== -->
+    <section id="blazers-era">
+        
+        <div class="hero">
+            <div class="hero-text">
+                <span class="badge">Capítulo II • Redenção</span>
+                <h1 style="color: #e03a3e;">RIP CITY: O NOVO CAPÍTULO</h1>
+                <p>Uma nova jersey, as cores Vermelho e Preto e a busca pelo topo. Ja Morant chega a Portland pronto para deixar o passado para trás e liderar o Trail Blazers rumo aos Playoffs.</p>
+            </div>
+            <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[FOTO JA MORANT UNIFORME BLAZERS]</div>
+        </div>
+
+        <!-- FLASH CARDS DA NOVA ERA -->
+        <span class="badge">Evolução do Atleta</span>
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">O NOVO PERFIL EM PORTLAND</h2>
+        <div class="flashcards-grid">
+            
+            <div class="flash-card" style="border-color: rgba(224, 58, 62, 0.2);">
+                <div class="card-image">[FOTO TREINO BLAZERS]</div>
+                <div class="half-blur-overlay" style="background: rgba(8, 3, 4, 0.85);">
+                    <h3>Maturidade</h3>
+                    <p>Foco total no vestiário e papel de liderança com os jovens talentos de Portland.</p>
+                </div>
+            </div>
+
+            <div class="flash-card" style="border-color: rgba(224, 58, 62, 0.2);">
+                <div class="card-image">[FOTO PREPARO FÍSICO]</div>
+                <div class="half-blur-overlay" style="background: rgba(8, 3, 4, 0.85);">
+                    <h3>Físico Preservado</h3>
+                    <p>Trabalho preventivo contra lesões para aguentar o ritmo longo da temporada e playoffs.</p>
+                </div>
+            </div>
+
+            <div class="flash-card" style="border-color: rgba(224, 58, 62, 0.2);">
+                <div class="card-image">[FOTO GAME WINNER RED]</div>
+                <div class="half-blur-overlay" style="background: rgba(8, 3, 4, 0.85);">
+                    <h3>Fogo Interno</h3>
+                    <p>A motivação de quem precisa provar novamente ao mundo que é um Top Guard da liga.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ESPAÇO FINAL DE GALERIA BLAZERS -->
+        <div class="origins-grid">
+            <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.3); height: 260px;">[BLAZERS FOTO 1]</div>
+            <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.3); height: 260px;">[BLAZERS FOTO 2]</div>
+            <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.3); height: 260px;">[BLAZERS FOTO 3]</div>
+        </div>
+
+    </section>
+
+    <!-- JAVASCRIPT: ANIMAÇÃO DE NUVENS AO CLICAR EM "A NEW JA?" -->
     <script>
-        const slider = document.getElementById('mainSlider');
-        const btnToBlazers = document.getElementById('toBlazers');
-        const btnToGrizzlies = document.getElementById('toGrizzlies');
-        const cloudOverlay = document.getElementById('cloud-overlay');
+        const btnSky = document.getElementById('skyTrigger');
+        const overlay = document.getElementById('cloud-overlay');
+        const blazersSection = document.getElementById('blazers-era');
 
-        // ANIMAÇÃO DE NUVENS NA TRANSIÇÃO "A NEW JA?"
-        btnToBlazers.addEventListener('click', () => {
-            cloudOverlay.classList.add('active');
+        btnSky.addEventListener('click', () => {
+            // Ativa o efeito de nuvem subindo
+            overlay.classList.add('active');
 
+            // No meio da animação (600ms), faz o scroll para a seção dos Blazers
             setTimeout(() => {
-                slider.classList.add('slide-blazers');
-                window.scrollTo({ top: 0, behavior: 'instant' });
+                blazersSection.scrollIntoView({ behavior: 'instant' });
             }, 600);
 
+            // Esconde as nuvens suavemente
             setTimeout(() => {
-                cloudOverlay.classList.remove('active');
-            }, 1200);
-        });
-
-        // RETORNO DE PORTLAND PARA MEMPHIS
-        btnToGrizzlies.addEventListener('click', () => {
-            slider.classList.remove('slide-blazers');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                overlay.classList.remove('active');
+            }, 1300);
         });
     </script>
 </body>
