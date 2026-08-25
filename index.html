@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA MORANT | THE ARCHIVE</title>
+    <title>JA MORANT | THE BLACK JESUS</title>
     
     <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -256,10 +256,61 @@
         .transition-text:hover { color: var(--accent-red); text-shadow: 0 0 40px rgba(239, 68, 68, 0.5); }
 
         /* SEÇÃO BLAZERS */
-        .section-blazers { padding: 80px 6% 140px; background: var(--bg-blazers); background-image: radial-gradient(circle at 90% 80%, var(--red-glow) 0%, transparent 40%); }
+        .section-blazers { 
+            padding: 80px 6% 60px; /* Reduzi o padding de baixo para encaixar o footer */
+            background: var(--bg-blazers); 
+            background-image: radial-gradient(circle at 90% 80%, var(--red-glow) 0%, transparent 40%); 
+        }
         .badge-red { color: var(--accent-red); font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; display: inline-block; margin-bottom: 12px; text-transform: uppercase;}
-        .blazers-card:hover { border-color: var(--accent-red); }
-        .blazers-card .blur-overlay h3 { color: var(--accent-red); }
+        
+        /* CAIXA DE TEXTO (A QUEDA E A TROCA) */
+        .story-box {
+            max-width: 900px;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--accent-red);
+            border-radius: 0 16px 16px 0;
+            backdrop-filter: blur(10px);
+        }
+        .story-box h3 {
+            color: var(--accent-red);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .story-text {
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        .story-text:last-child { margin-bottom: 0; }
+
+        /* FOOTER: O FUTURO ESTÁ SENDO ESCRITO */
+        .future-footer {
+            padding: 80px 6%;
+            text-align: center;
+            background: var(--bg-blazers);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .future-text {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: pulse-future 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse-future {
+            0% { opacity: 0.4; text-shadow: none; color: rgba(255, 255, 255, 0.4); }
+            100% { opacity: 1; text-shadow: 0 0 25px rgba(239, 68, 68, 0.6); color: var(--accent-red); }
+        }
 
         @media (max-width: 900px) {
             .split-layout { grid-template-columns: 1fr; }
@@ -269,6 +320,7 @@
             .carousel-item { width: 300px; }
             .carousel-item.prev { transform: scale(0.85) translateX(-60%); }
             .carousel-item.next { transform: scale(0.85) translateX(60%); }
+            .story-box { padding: 25px; }
         }
     </style>
 </head>
@@ -306,7 +358,6 @@
                     <h2 class="section-title">HABILIDADES DE ELITE</h2>
                     <div class="flashcards-grid">
                         
-                        <!-- CARD 1: POSTERS -->
                         <a href="#link-posters" class="flash-card">
                             <div class="card-bg">[ IMAGEM: POSTERS ]</div>
                             <div class="blur-overlay">
@@ -316,7 +367,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 2: ENTERRADAS -->
                         <a href="#link-enterradas" class="flash-card">
                             <div class="card-bg">[ IMAGEM: ENTERRADAS ]</div>
                             <div class="blur-overlay">
@@ -326,7 +376,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 3: BEST PLAYS -->
                         <a href="#link-best-plays" class="flash-card">
                             <div class="card-bg">[ IMAGEM: BEST PLAYS ]</div>
                             <div class="blur-overlay">
@@ -336,7 +385,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 4: BAG WORK -->
                         <a href="#link-bag-work" class="flash-card">
                             <div class="card-bg">[ IMAGEM: BAG WORK ]</div>
                             <div class="blur-overlay">
@@ -400,25 +448,31 @@
         <h2 class="transition-text">a new ja?</h2>
     </div>
 
-    <!-- PARTE 2: ERA BLAZERS -->
+    <!-- PARTE 2: ERA BLAZERS (TEXTO LIVRE) -->
     <section class="section-blazers" id="blazers">
-        <span class="badge-red">Chapter II • The Resurgence</span>
+        <span class="badge-red">Chapter II • The Fall & The Trade</span>
         <h1 class="hero-title" style="color: #fff;">REDENÇÃO EM RIP CITY</h1>
         <p class="hero-subtitle">
             Um recomeço vestindo Vermelho e Preto. O momento de virada de chave mental e a busca por liderar o Portland Trail Blazers rumo ao topo.
         </p>
 
-        <div class="flashcards-grid">
-            <a href="#" class="flash-card blazers-card">
-                <div class="card-bg">[ IMAGEM: BLAZERS ERA ]</div>
-                <div class="blur-overlay">
-                    <h3>Liderança de Elenco</h3>
-                    <p>Visão de jogo refinada e maturidade para comandar a armação.</p>
-                    <span class="watch-tag" style="color: var(--accent-red);">Assistir visão ↗</span>
-                </div>
-            </a>
+        <!-- CAIXA RESERVADA PARA O SEU TEXTO -->
+        <div class="story-box">
+            <h3>A Queda e o Recomeço</h3>
+            <p class="story-text">
+                [ ESCREVA SEU TEXTO AQUI: Conte os detalhes sobre por que ele decaiu, as polêmicas fora de quadra, suspensões e o impacto no seu valor de mercado. ]
+            </p>
+            <p class="story-text">
+                [ CONTINUE O TEXTO AQUI: Detalhe como ocorreu a negociação que o levou ao Portland Trail Blazers a um custo tão baixo e como isso pode ser o ponto de virada da sua carreira. ]
+            </p>
         </div>
+
     </section>
+
+    <!-- FOOTER / ENCERRAMENTO -->
+    <footer class="future-footer">
+        <p class="future-text">o futuro continua sendo escrito...</p>
+    </footer>
 
     <!-- SCRIPT DO CARROSSEL DE TÊNIS -->
     <script>
