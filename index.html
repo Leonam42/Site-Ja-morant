@@ -8,17 +8,17 @@
     <!-- FONTES EDITORIAIS ESPORTIVAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-grizzlies: #070a0f;
             --accent-blue: #38bdf8;
-            --blue-glow: rgba(56, 189, 248, 0.15);
+            --blue-glow: rgba(56, 189, 248, 0.18);
             
             --bg-blazers: #090405;
             --accent-red: #ef4444;
-            --red-glow: rgba(239, 68, 68, 0.15);
+            --red-glow: rgba(239, 68, 68, 0.18);
             
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Syne', sans-serif;
             text-transform: uppercase;
             letter-spacing: -0.5px;
@@ -52,10 +52,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 6%;
-            background: rgba(7, 10, 15, 0.75);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+            padding: 20px 6%;
+            background: rgba(7, 10, 15, 0.85);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -68,7 +68,7 @@
         nav {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav a {
@@ -94,9 +94,17 @@
 
         /* SEÇÃO 1: GRIZZLIES ERA (PRETO & AZUL) */
         .section-grizzlies {
-            padding: 140px 6% 100px;
+            padding: 130px 6% 100px;
             background: var(--bg-grizzlies);
-            background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 40%);
+            background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 45%);
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 100px;
         }
 
         .badge-blue {
@@ -110,24 +118,161 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 7vw, 6rem);
+            font-size: clamp(2.8rem, 5.5vw, 5.2rem);
             line-height: 0.95;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 650px;
             line-height: 1.7;
-            margin-bottom: 60px;
+            margin-bottom: 35px;
             font-weight: 300;
         }
 
-        /* GRID DE HISTÓRIA / ORIGENS */
+        /* CONTEÚDO ENRIQUECIDO NA ESQUERDA PARA NÃO FICAR VAZIO */
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-box h4 {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+        }
+
+        .stat-box p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* CONTAINER DA IMAGEM DE CORPO INTEIRO (DIREITA) + SISTEMA DE INTERAÇÃO DOS TÊNIS */
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .full-body-img {
+            max-height: 620px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.15));
+        }
+
+        /* TRIGGER/HOTSPOT INTERATIVO NOS TÊNIS */
+        .sneaker-hotspot-container {
+            position: absolute;
+            bottom: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .sneaker-trigger-btn {
+            background: rgba(7, 10, 15, 0.85);
+            border: 1px solid var(--accent-blue);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .sneaker-trigger-btn:hover {
+            background: var(--accent-blue);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        /* MINI ABA / POPOVER DO TÊNIS */
+        .sneaker-popover {
+            position: absolute;
+            bottom: 50px;
+            width: 280px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            backdrop-filter: blur(16px);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+
+        .sneaker-hotspot-container:hover .sneaker-popover,
+        .sneaker-popover.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sneaker-popover h4 {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+        }
+
+        .sneaker-popover p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .sneaker-popover .popover-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: var(--accent-blue);
+            color: #070a0f;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .sneaker-popover .popover-btn:hover {
+            background: #7dd3fc;
+        }
+
+        /* HISTÓRIA E ORIGENS */
         .history-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-bottom: 100px;
         }
@@ -289,10 +434,12 @@
             color: var(--accent-red);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .hero-layout { grid-template-columns: 1fr; gap: 60px; }
+            .hero-image-wrapper { order: -1; }
+            .full-body-img { max-height: 480px; }
             header { padding: 18px 5%; }
             .section-grizzlies, .section-blazers { padding-left: 5%; padding-right: 5%; }
-            .flash-card { height: 380px; }
         }
     </style>
 </head>
@@ -305,17 +452,63 @@
             <a href="#grizzlies">Grizzlies Era</a>
             <a href="#blazers">Blazers Chapter</a>
             <!-- Espaço reservado para a futura aba de Tênis -->
-            <span class="btn-sneakers-placeholder">[ Aba Tênis (Em breve) ]</span>
+            <span class="btn-sneakers-placeholder">[ Aba Tênis ]</span>
         </nav>
     </header>
 
     <!-- PARTE 1: ERA GRIZZLIES (AZUL E PRETO) -->
     <section class="section-grizzlies" id="grizzlies">
-        <span class="badge-blue">Chapter I • Origin & Rise</span>
-        <h1 class="hero-title">O VOO DE MEMPHIS</h1>
-        <p class="hero-subtitle">
-            Da falta de recrutamento no ensino médio até se tornar uma das forças mais eletrizantes e implacáveis da NBA moderna.
-        </p>
+        
+        <!-- LAYOUT HERO: TEXTO NA ESQUERDA + FOTO CORPO INTEIRO NA DIREITA -->
+        <div class="hero-layout">
+            
+            <!-- COLUNA ESQUERDA (INFORMAÇÕES DETALHADAS) -->
+            <div class="hero-info">
+                <span class="badge-blue">Chapter I • Origin & Rise</span>
+                <h1 class="hero-title">O VOO DE MEMPHIS</h1>
+                <p class="hero-subtitle">
+                    Subestimado no ensino médio e ignorado pelas grandes universidades. Ja Morant transformou a ética de trabalho em uma das carreiras mais eletrizantes da história recente da NBA.
+                </p>
+
+                <!-- BLOCOS DE ESTATÍSTICAS PARA PREENCHER O LADO ESQUERDO -->
+                <div class="hero-stats-grid">
+                    <div class="stat-box">
+                        <h4>#2</h4>
+                        <p>Draft 2019</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>ROY</h4>
+                        <p>Novato do Ano</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>2x</h4>
+                        <p>NBA All-Star</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREIRA (IMAGEM CORPO INTEIRO + INTERAÇÃO DOS TÊNIS) -->
+            <div class="hero-image-wrapper">
+                <img src="jamorant.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
+
+                <!-- HOTSPOT & MINI ABA SUSPENSA SOBRE OS TÊNIS -->
+                <div class="sneaker-hotspot-container">
+                    
+                    <!-- MINI ABA POPUP -->
+                    <div class="sneaker-popover">
+                        <h4>Sneaker Line 👟</h4>
+                        <p>Deseja ser redirecionado para a aba exclusiva de tênis do Ja Morant?</p>
+                        <a href="#" class="popover-btn" onclick="alert('Área de tênis em breve!'); return false;">Ver Coleção Nike Ja</a>
+                    </div>
+
+                    <!-- BOTÃO PULSANTE NO PÉ DO ATLETA -->
+                    <button class="sneaker-trigger-btn">
+                        <span>👟</span> Ver Tênis
+                    </button>
+                </div>
+            </div>
+
+        </div>
 
         <!-- ORIGENS / HISTÓRIA -->
         <div class="history-grid">
@@ -339,11 +532,11 @@
 
         <div class="flashcards-grid">
             
-            <!-- CARD 1: DUNKS (Clique redireciona para o vídeo no YouTube) -->
+            <!-- CARD 1: DUNKS -->
             <a href="https://www.youtube.com/results?search_query=ja+morant+best+dunks" target="_blank" class="flash-card">
                 <div class="card-bg">[ IMAGEM: DUNKS ]</div>
                 <div class="blur-overlay">
-                    <h3>Poster Dumps</h3>
+                    <h3>Poster Dunks</h3>
                     <p>Impulsão vertical sem medo de protetores de aro. Ameaça constante acima da tabela.</p>
                     <span class="watch-tag">Assistir lances ↗</span>
                 </div>
