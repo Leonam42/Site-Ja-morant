@@ -3,251 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ja Morant | O Voo do Armador</title>
+    <title>Ja Morant | The Evolution</title>
     <style>
-        /* === VARIÁVEIS DE CORES === */
-        :root {
-            /* Tema Grizzlies (Início de Carreira) */
-            --grizz-navy: #12173F;
-            --grizz-blue: #5D76A9;
-            --grizz-gold: #F5B112;
-            --grizz-text: #FFFFFF;
-
-            /* Tema Blazers (Nova Era) */
-            --blazers-black: #000000;
-            --blazers-red: #E03A3E;
-            --blazers-white: #FFFFFF;
-        }
-
-        /* === RESET BÁSICO === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
+            background-color: #090a0f;
+            color: #ffffff;
             overflow-x: hidden;
+            width: 100vw;
         }
 
-        /* === CLASSES DE TEMA === */
-        .theme-grizzlies {
-            background-color: var(--grizz-navy);
-            color: var(--grizz-text);
-        }
-        .theme-grizzlies h1, .theme-grizzlies h2 {
-            color: var(--grizz-gold);
-        }
-        .theme-grizzlies .btn {
-            background-color: var(--grizz-blue);
-            color: white;
-        }
-
-        .theme-blazers {
-            background-color: var(--blazers-black);
-            color: var(--blazers-white);
-        }
-        .theme-blazers h1, .theme-blazers h2 {
-            color: var(--blazers-red);
-        }
-        .theme-blazers .btn {
-            background-color: var(--blazers-red);
-            color: white;
-        }
-
-        /* === ESTRUTURA DAS SEÇÕES === */
-        section {
-            min-height: 100vh;
-            padding: 80px 10%;
+        /* Contêiner Deslizante (Slide Horizontal) */
+        .viewport-slider {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            width: 200vw;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        .content-wrapper {
+        .viewport-slider.slide-blazers {
+            transform: translateX(-100vw);
+        }
+
+        .era-panel {
+            width: 100vw;
+            min-height: 100vh;
+            padding: 60px 8%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- TEMA MEMPHIS (Preto & Azul) --- */
+        .grizzlies-theme {
+            background: linear-gradient(180deg, #07080c 0%, #0d111a 100%);
+            color: #e2e8f0;
+        }
+
+        .grizzlies-theme h1, .grizzlies-theme h2 {
+            color: #3b82f6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- TEMA BLAZERS (Preto & Vermelho) --- */
+        .blazers-theme {
+            background: linear-gradient(180deg, #0a0202 0%, #170505 100%);
+            color: #ffffff;
+        }
+
+        .blazers-theme h1, .blazers-theme h2 {
+            color: #e03a3e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Elementos Reutilizáveis */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 60px 0;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        /* Cards de Habilidades (Estilo Referência) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 60px 0;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Seção Obstáculos/Polêmicas */
+        .troubles-section {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid #ef4444;
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+            margin: 60px 0;
+        }
+
+        .troubles-section h2 {
+            color: #ef4444;
+            margin-bottom: 15px;
+        }
+
+        /* Placeholders para Imagens */
+        .img-placeholder {
+            width: 100%;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            justify-content: center;
+            color: #64748b;
+            font-weight: 600;
         }
 
-        .text-box {
-            flex: 1;
-            min-width: 300px;
+        /* Gatilho Transição "a new Ja?" */
+        .transition-trigger-container {
+            text-align: center;
+            margin: 80px 0 40px;
         }
 
-        .text-box p {
-            font-size: 1.2rem;
-            line-height: 1.6;
+        .trigger-text {
+            background: none;
+            border: none;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            cursor: pointer;
+            position: relative;
+            letter-spacing: 3px;
+            text-transform: lowercase;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .trigger-text:hover {
+            color: #e03a3e;
+            text-shadow: 0 0 20px rgba(224, 58, 62, 0.6);
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
             margin-bottom: 20px;
         }
 
-        .image-placeholder {
-            flex: 1;
-            min-width: 300px;
-            height: 400px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px dashed rgba(255, 255, 255, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
         }
-
-        .image-placeholder:hover {
-            transform: scale(1.02);
-        }
-
-        /* Estilização do Botão (Link) */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            text-transform: uppercase;
-            transition: opacity 0.3s ease;
-        }
-        .btn:hover {
-            opacity: 0.8;
-        }
-
-        /* === TRANSIÇÃO DE EQUIPE === */
-        .transition-banner {
-            height: 20vh;
-            background: linear-gradient(to bottom, var(--grizz-navy), var(--blazers-black));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-        
-        .transition-banner::after {
-            content: "THE TRADE / NEW ERA";
-            font-size: 3rem;
-            font-weight: 900;
-            color: rgba(255,255,255,0.1);
-            letter-spacing: 10px;
-        }
-
-        /* === EFEITOS DE ANIMAÇÃO === */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- ==========================================
-         PARTE 1: ERA MEMPHIS GRIZZLIES
-         ========================================== -->
+    <div class="viewport-slider" id="mainSlider">
 
-    <!-- SEÇÃO HERO (INÍCIO) -->
-    <section class="theme-grizzlies" id="inicio">
-        <div class="content-wrapper">
-            <div class="text-box fade-in">
-                <h1>JA MORANT</h1>
-                <p>Explosão. Visão. Liderança. Desde o momento em que pisou na quadra por Murray State, até se tornar o Novato do Ano e colocar Memphis no mapa novamente com a cultura "Grit and Grind".</p>
-                <!-- SUBSTITUA O '#' PELO SEU LINK -->
-                <a href="#" class="btn">[LINK PARA HIGHLIGHTS AQUI]</a>
+        <!-- ================= PAINEL 1: GRIZZLIES ================= -->
+        <section class="era-panel grizzlies-theme">
+            <header>
+                <h2>12 | BEARS ERA 🏀</h2>
+                <nav>[LINK REDES / MIDIA]</nav>
+            </header>
+
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>JA MORANT</h1>
+                    <p>O jogador mais eletrizante e destemido da liga. Dominando a quadra com gravidade zero e uma mentalidade que colocou Memphis no topo.</p>
+                    <a href="#" style="color: #3b82f6; text-decoration: none; font-weight: bold;">[LINK HIGHLIGHTS]</a>
+                </div>
+                <div class="img-placeholder">[ESPAÇO: IMAGEM PRINCIPAL MEMPHIS]</div>
             </div>
-            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
-            <!-- <img src="sua-imagem-grizzlies.jpg" alt="Ja Morant Grizzlies"> -->
-            <div class="image-placeholder fade-in">
-                [IMAGEM JA MORANT GRIZZLIES]
+
+            <!-- SEÇÃO ESTILO REFERÊNCIA (HABILIDADES) -->
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 style="color: #3b82f6;">Enterradas</h3>
+                    <p>Saltos inacreditáveis desconsiderando qualquer protetor de aro na NBA.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 style="color: #3b82f6;">Passe & Visão</h3>
+                    <p>Assistências sem olhar e controle absoluto do ritmo de jogo.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 style="color: #3b82f6;">Velocidade</h3>
+                    <p>Primeiro passo imparável na transição de quadra.</p>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- SEÇÃO SOBRE A VIDA -->
-    <section class="theme-grizzlies" id="sobre">
-        <div class="content-wrapper" style="flex-direction: row-reverse;">
-            <div class="text-box fade-in">
-                <h2>O Garoto de Dalzell</h2>
-                <p>Treinando no quintal criado por seu pai, Ja provou que não importa de onde você vem, mas sim a altura do seu salto e o tamanho do seu coração. De "unranked" no ensino médio para a 2ª escolha geral do Draft da NBA.</p>
-                <!-- SUBSTITUA O '#' PELO SEU LINK -->
-                <a href="#" class="btn">[LINK PARA ENTREVISTA/HISTÓRIA]</a>
+            <!-- SEÇÃO CONFLITOS E TURBULÊNCIAS -->
+            <div class="troubles-section">
+                <h2>O Preço do Furacão</h2>
+                <p>Lesões graves nos ombros e joelhos, combinadas com controvérsias fora das quadras, multas pesadas e suspensões da liga. O desgaste físico e os erros de percurso colocaram em xeque o futuro de uma das maiores promessas do basquete moderno.</p>
             </div>
-            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
-            <div class="image-placeholder fade-in">
-                [IMAGEM INFÂNCIA/COLLEGE AQUI]
+
+            <div class="img-placeholder" style="height: 250px;">[ESPAÇO: GALERIA DE FOTOS GRIZZLIES / MOMENTOS DÍFECEIS]</div>
+
+            <!-- BOTÃO QUE FAZ A TRANSIÇÃO "PASSAR PRO LADO" -->
+            <div class="transition-trigger-container">
+                <button class="trigger-text" id="toBlazers">a new Ja? &rarr;</button>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- ================= PAINEL 2: BLAZERS ================= -->
+        <section class="era-panel blazers-theme">
+            <button class="back-btn" id="toGrizzlies">&larr; Voltar para Memphis</button>
 
-    <!-- ==========================================
-         A TRANSIÇÃO DRAMÁTICA
-         ========================================== -->
-    <div class="transition-banner"></div>
+            <header>
+                <h2>12 | RIP CITY 🌹</h2>
+                <nav>[LINK NOVO TIME / LOJA]</nav>
+            </header>
 
-
-    <!-- ==========================================
-         PARTE 2: NOVA ERA - PORTLAND TRAIL BLAZERS
-         ========================================== -->
-
-    <!-- SEÇÃO NOVA EQUIPE -->
-    <section class="theme-blazers" id="nova-era">
-        <div class="content-wrapper">
-            <div class="text-box fade-in">
-                <h2>RIP CITY: O Novo Capítulo</h2>
-                <p>Uma nova jersey, a mesma mentalidade assassina. Chegando em Portland para reescrever a história e trazer o fogo de volta ao Moda Center. O número 12 agora brilha em Vermelho e Preto.</p>
-                <!-- SUBSTITUA O '#' PELO SEU LINK -->
-                <a href="#" class="btn">[LINK PARA CAMISA/ANÚNCIO AQUI]</a>
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>REDEMPTION</h1>
+                    <p>Novo ar, novas cores, a mesma fome. Deixando o passado para trás para liderar o Portland Trail Blazers em uma era de redenção e foco total no anel de campeão.</p>
+                    <a href="#" style="color: #e03a3e; text-decoration: none; font-weight: bold;">[LINK COMUNICADO OFICIAL]</a>
+                </div>
+                <div class="img-placeholder" style="border-color: rgba(224, 58, 62, 0.4);">[ESPAÇO: IMAGEM JA MORANT BLAZERS]</div>
             </div>
-            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
-            <div class="image-placeholder fade-in" style="border-color: var(--blazers-red);">
-                [IMAGEM JA MORANT BLAZERS AQUI]
-            </div>
-        </div>
-    </section>
 
-    <!-- SEÇÃO O FUTURO -->
-    <section class="theme-blazers" id="futuro">
-        <div class="content-wrapper" style="flex-direction: row-reverse;">
-            <div class="text-box fade-in">
-                <h2>Pronto Para o Topo</h2>
-                <p>Unindo forças com o elenco jovem e faminto dos Blazers, o objetivo de Ja agora é um só: O Campeonato. Preparem-se para enterradas absurdas e passes no blind-side que vão levantar o Oregon.</p>
-                <!-- SUBSTITUA O '#' PELO SEU LINK -->
-                <a href="#" class="btn">[LINK REDE SOCIAL OU VÍDEO FINAL]</a>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 style="color: #e03a3e;">Maturidade</h3>
+                    <p>Liderando um elenco jovem com a experiência de quem já esteve no topo e no fundo do poço.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 style="color: #e03a3e;">Novo Físico</h3>
+                    <p>Foco em recuperação e condicionamento para aguentar o ritmo dos playoffs.</p>
+                </div>
+                <div class="skill-card">
+                    <h3 style="color: #e03a3e;">Fogo Renovado</h3>
+                    <p>Motivação em dobro para provar aos críticos que ele ainda é um Top Guard.</p>
+                </div>
             </div>
-            <!-- SUBSTITUA O NOME DA IMAGEM ABAIXO -->
-            <div class="image-placeholder fade-in" style="border-color: var(--blazers-red);">
-                [IMAGEM ACTION BLAZERS AQUI]
-            </div>
-        </div>
-    </section>
 
-    <!-- JAVASCRIPT PARA ANIMAÇÃO DE ROLAGEM -->
+            <div class="img-placeholder" style="height: 250px; border-color: rgba(224, 58, 62, 0.4);">[ESPAÇO: IMAGEM FINAL / BLAZERS UNIFORM]</div>
+        </section>
+
+    </div>
+
     <script>
-        // Esse código simples faz as coisas aparecerem suavemente quando você rola a página
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 }); // Dispara quando 10% do elemento aparece
+        const slider = document.getElementById('mainSlider');
+        const btnToBlazers = document.getElementById('toBlazers');
+        const btnToGrizzlies = document.getElementById('toGrizzlies');
 
-            elements.forEach(element => {
-                observer.observe(element);
-            });
+        // Transição para o lado dos Blazers
+        btnToBlazers.addEventListener('click', () => {
+            slider.classList.add('slide-blazers');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Retorno opcional para os Grizzlies
+        btnToGrizzlies.addEventListener('click', () => {
+            slider.classList.remove('slide-blazers');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
