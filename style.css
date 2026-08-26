@@ -72,17 +72,19 @@ nav a:hover {
 
 /* SEÇÃO 1: GRIZZLIES ERA */
 .section-grizzlies {
-    padding: 130px 6% 60px;
+    padding: 130px 6% 80px;
     background: var(--bg-grizzlies);
     background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 45%);
     position: relative;
 }
 
+/* LAYOUT TOPO (DESTAQUE) */
 .split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
+    margin-bottom: 70px;
 }
 
 .left-content {
@@ -90,7 +92,6 @@ nav a:hover {
     z-index: 10;
 }
 
-/* IMAGEM DO JA MORANT PARADA E ENQUADRADA */
 .right-content {
     position: relative;
     z-index: 5;
@@ -105,12 +106,14 @@ nav a:hover {
     justify-content: center;
 }
 
+/* IMAGEM GIGANTE NA DIREITA */
 .full-body-img {
-    max-width: 100%;
+    width: 100%;
+    max-width: 520px;
     height: auto;
-    max-height: 80vh;
+    max-height: 85vh;
     object-fit: contain;
-    filter: drop-shadow(-10px 0 30px rgba(56, 189, 248, 0.35));
+    filter: drop-shadow(-15px 0 40px rgba(56, 189, 248, 0.35));
 }
 
 .badge-blue {
@@ -140,9 +143,8 @@ nav a:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    padding: 20px 0;
+    padding-top: 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 40px;
 }
 
 .stat-box h4 {
@@ -157,22 +159,26 @@ nav a:hover {
     margin-top: 4px;
 }
 
-/* HABILIDADES COM LAYOUT HORIZONTAL E INTERATIVO */
+/* CONTAINER DE HABILIDADES (Abaixo do Topo) */
+.habilidades-container {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .section-title {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
     margin-bottom: 30px;
 }
 
 .flashcards-grid {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 24px;
     overflow-x: auto;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     scroll-snap-type: x mandatory;
 }
 
-/* Personalização da barra de rolagem dos cards */
 .flashcards-grid::-webkit-scrollbar {
     height: 6px;
 }
@@ -186,8 +192,9 @@ nav a:hover {
 }
 
 .flash-card {
-    flex: 0 0 240px;
-    height: 350px;
+    flex: 1 0 260px;
+    max-width: 320px;
+    height: 380px;
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -198,9 +205,9 @@ nav a:hover {
 }
 
 .flash-card:hover, .flash-card:focus {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     border-color: var(--accent-blue);
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.25);
     outline: none;
 }
 
@@ -221,7 +228,7 @@ nav a:hover {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 55%;
+    height: 50%;
     background: rgba(7, 10, 15, 0.75);
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -244,12 +251,12 @@ nav a:hover {
 
 .flash-card .blur-overlay p {
     color: #cbd5e1;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.4;
 }
 
 .watch-tag {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--accent-blue);
@@ -478,7 +485,7 @@ nav a:hover {
 
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {
-    .split-layout { grid-template-columns: 1fr; }
+    .split-layout { grid-template-columns: 1fr; margin-bottom: 40px; }
     .btn-prev { left: 0; }
     .btn-next { right: 0; }
     .carousel-item { width: 300px; }
@@ -486,4 +493,3 @@ nav a:hover {
     .carousel-item.next { transform: scale(0.85) translateX(60%); }
     .story-box { padding: 25px; }
 }
-
