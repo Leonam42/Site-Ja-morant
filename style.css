@@ -32,7 +32,7 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
-/* HEADER */
+/* HEADER COM LOGO ATUALIZADO */
 header {
     position: fixed;
     top: 0;
@@ -40,14 +40,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 6%;
+    padding: 15px 6%;
     background: rgba(7, 10, 15, 0.85);
     backdrop-filter: blur(14px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.logo {
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 35px; /* Tamanho agradável da logo */
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+.logo-text {
     font-size: 1.4rem;
     font-weight: 900;
     letter-spacing: 2px;
@@ -72,13 +84,13 @@ nav a:hover {
 
 /* SEÇÃO 1: GRIZZLIES ERA */
 .section-grizzlies {
-    padding: 130px 6% 80px;
+    padding: 140px 6% 80px;
     background: var(--bg-grizzlies);
     background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 45%);
     position: relative;
 }
 
-/* LAYOUT TOPO (DESTAQUE) */
+/* LAYOUT DO TOPO (DESTAQUE) */
 .split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -97,7 +109,7 @@ nav a:hover {
     z-index: 5;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .image-wrapper {
@@ -109,7 +121,7 @@ nav a:hover {
 /* IMAGEM GIGANTE NA DIREITA */
 .full-body-img {
     width: 100%;
-    max-width: 520px;
+    max-width: 550px;
     height: auto;
     max-height: 85vh;
     object-fit: contain;
@@ -163,6 +175,7 @@ nav a:hover {
 .habilidades-container {
     padding-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
 }
 
 .section-title {
@@ -170,37 +183,21 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
+/* CARDS OCUPANDO TODO O ESPAÇO DISTRIBUÍDO */
 .flashcards-grid {
-    display: flex;
-    flex-direction: row;
-    gap: 24px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
-}
-
-.flashcards-grid::-webkit-scrollbar {
-    height: 6px;
-}
-.flashcards-grid::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-.flashcards-grid::-webkit-scrollbar-thumb {
-    background: var(--accent-blue);
-    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas com tamanhos iguais */
+    gap: 20px; /* Sem espaços vazios grandes, tudo alinhado */
+    width: 100%;
 }
 
 .flash-card {
-    flex: 1 0 260px;
-    max-width: 320px;
-    height: 380px;
     position: relative;
+    height: 380px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer;
-    scroll-snap-align: start;
+    cursor: default;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -483,7 +480,13 @@ nav a:hover {
     100% { opacity: 1; text-shadow: 0 0 25px rgba(239, 68, 68, 0.6); color: var(--accent-red); }
 }
 
-/* RESPONSIVIDADE */
+/* RESPONSIVIDADE (TELAS MENORES) */
+@media (max-width: 1024px) {
+    .flashcards-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    }
+}
+
 @media (max-width: 900px) {
     .split-layout { grid-template-columns: 1fr; margin-bottom: 40px; }
     .btn-prev { left: 0; }
@@ -492,4 +495,10 @@ nav a:hover {
     .carousel-item.prev { transform: scale(0.85) translateX(-60%); }
     .carousel-item.next { transform: scale(0.85) translateX(60%); }
     .story-box { padding: 25px; }
+}
+
+@media (max-width: 600px) {
+    .flashcards-grid {
+        grid-template-columns: 1fr; /* 1 coluna em celulares */
+    }
 }
