@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JA MORANT | THE BLACK JESUS</title>
+    <title>JA MORANT | THE ARCHIVE</title>
     
     <!-- FONTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +98,9 @@
             transition: transform 0.4s ease, border-color 0.4s ease;
         }
         .flash-card:hover { transform: translateY(-8px); border-color: var(--accent-blue); }
-        .card-bg { width: 100%; height: 100%; background: #1e293b; display: flex; align-items: center; justify-content: center; color: #475569; font-weight: 700; }
+        
+        /* Modificado para receber as tags <img> perfeitamente */
+        .card-bg { width: 100%; height: 100%; object-fit: cover; display: block; }
         
         .flash-card .blur-overlay {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
@@ -257,7 +259,7 @@
 
         /* SEÇÃO BLAZERS */
         .section-blazers { 
-            padding: 80px 6% 60px; /* Reduzi o padding de baixo para encaixar o footer */
+            padding: 80px 6% 60px; 
             background: var(--bg-blazers); 
             background-image: radial-gradient(circle at 90% 80%, var(--red-glow) 0%, transparent 40%); 
         }
@@ -358,8 +360,9 @@
                     <h2 class="section-title">HABILIDADES DE ELITE</h2>
                     <div class="flashcards-grid">
                         
-                        <a href="#link-posters" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: POSTERS ]</div>
+                        <!-- CARD 1: POSTERS -->
+                        <a href="#" class="flash-card">
+                            <img src="poster.png" alt="Posters" class="card-bg">
                             <div class="blur-overlay">
                                 <h3>Posters</h3>
                                 <p>Impulsão vertical sem medo de protetores de aro.</p>
@@ -367,8 +370,9 @@
                             </div>
                         </a>
                         
-                        <a href="#link-enterradas" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: ENTERRADAS ]</div>
+                        <!-- CARD 2: ENTERRADAS -->
+                        <a href="#" class="flash-card">
+                            <img src="dunk.png" alt="Enterradas" class="card-bg">
                             <div class="blur-overlay">
                                 <h3>Enterradas</h3>
                                 <p>Ataques ferozes e acrobáticos em direção à cesta.</p>
@@ -376,8 +380,9 @@
                             </div>
                         </a>
                         
-                        <a href="#link-best-plays" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: BEST PLAYS ]</div>
+                        <!-- CARD 3: BEST PLAYS -->
+                        <a href="#" class="flash-card">
+                            <img src="bestPlays.png" alt="Best Plays" class="card-bg">
                             <div class="blur-overlay">
                                 <h3>Best Plays</h3>
                                 <p>Os momentos mais eletrizantes e inesquecíveis em quadra.</p>
@@ -385,8 +390,9 @@
                             </div>
                         </a>
                         
-                        <a href="#link-bag-work" class="flash-card">
-                            <div class="card-bg">[ IMAGEM: BAG WORK ]</div>
+                        <!-- CARD 4: BAG WORK -->
+                        <a href="#" class="flash-card">
+                            <img src="bagWork.png" alt="Bag Work" class="card-bg">
                             <div class="blur-overlay">
                                 <h3>Bag Work</h3>
                                 <p>Controle de bola e movimentos imprevisíveis quebrando defesas.</p>
@@ -401,7 +407,8 @@
             <!-- LADO DIREITO: IMAGEM MONSTRUOSA -->
             <div class="right-content">
                 <div class="image-sticky-wrapper">
-                    <img src="jamorant.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
+                    <!-- FOTO ATUALIZADA AQUI -->
+                    <img src="oldJa.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
                 </div>
             </div>
 
@@ -448,7 +455,7 @@
         <h2 class="transition-text">a new ja?</h2>
     </div>
 
-    <!-- PARTE 2: ERA BLAZERS (TEXTO LIVRE) -->
+    <!-- PARTE 2: ERA BLAZERS -->
     <section class="section-blazers" id="blazers">
         <span class="badge-red">Chapter II • The Fall & The Trade</span>
         <h1 class="hero-title" style="color: #fff;">REDENÇÃO EM RIP CITY</h1>
