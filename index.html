@@ -99,7 +99,6 @@
         }
         .flash-card:hover { transform: translateY(-8px); border-color: var(--accent-blue); }
         
-        /* Modificado para receber as tags <img> perfeitamente */
         .card-bg { width: 100%; height: 100%; object-fit: cover; display: block; }
         
         .flash-card .blur-overlay {
@@ -201,18 +200,21 @@
             filter: brightness(0.5) blur(3px);
         }
 
-        .sneaker-img-placeholder {
-            height: 280px; 
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(0, 0, 0, 0.5));
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 12px;
+        /* NOVO ESTILO DOS TÊNIS VOADORES */
+        .sneaker-img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
             margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.65));
+            animation: float-sneaker 3.5s ease-in-out infinite;
+        }
+
+        /* Animação para dar a sensação de levitação e movimento */
+        @keyframes float-sneaker {
+            0% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); filter: drop-shadow(0 35px 35px rgba(0, 0, 0, 0.5)); }
+            100% { transform: translateY(0) rotate(-2deg); }
         }
 
         .carousel-item h3 { color: var(--accent-blue); font-size: 1.8rem; margin-bottom: 10px; }
@@ -360,7 +362,6 @@
                     <h2 class="section-title">HABILIDADES DE ELITE</h2>
                     <div class="flashcards-grid">
                         
-                        <!-- CARD 1: POSTERS -->
                         <a href="#" class="flash-card">
                             <img src="poster.png" alt="Posters" class="card-bg">
                             <div class="blur-overlay">
@@ -370,7 +371,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 2: ENTERRADAS -->
                         <a href="#" class="flash-card">
                             <img src="dunk.png" alt="Enterradas" class="card-bg">
                             <div class="blur-overlay">
@@ -380,7 +380,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 3: BEST PLAYS -->
                         <a href="#" class="flash-card">
                             <img src="bestPlays.png" alt="Best Plays" class="card-bg">
                             <div class="blur-overlay">
@@ -390,7 +389,6 @@
                             </div>
                         </a>
                         
-                        <!-- CARD 4: BAG WORK -->
                         <a href="#" class="flash-card">
                             <img src="bagWork.png" alt="Bag Work" class="card-bg">
                             <div class="blur-overlay">
@@ -407,7 +405,6 @@
             <!-- LADO DIREITO: IMAGEM MONSTRUOSA -->
             <div class="right-content">
                 <div class="image-sticky-wrapper">
-                    <!-- FOTO ATUALIZADA AQUI -->
                     <img src="oldJa.png" alt="Ja Morant Corpo Inteiro" class="full-body-img">
                 </div>
             </div>
@@ -424,26 +421,35 @@
             <button class="carousel-btn btn-prev" onclick="moveCarousel(-1)">❮</button>
             
             <div class="carousel-track" id="track">
+                
+                <!-- NIKE JA 1 -->
                 <div class="carousel-item">
-                    <div class="sneaker-img-placeholder">[ FOTO JA 1 ]</div>
+                    <img src="ja1.png" alt="Nike Ja 1" class="sneaker-img">
                     <h3>Nike Ja 1</h3>
                     <p>O modelo de estreia brutal. Amortecimento ágil e tração severa para cortes perfeitos.</p>
                 </div>
+                
+                <!-- NIKE JA 2 -->
                 <div class="carousel-item">
-                    <div class="sneaker-img-placeholder">[ FOTO JA 2 ]</div>
+                    <img src="ja2.png" alt="Nike Ja 2" class="sneaker-img">
                     <h3>Nike Ja 2</h3>
                     <p>Suporte extra no calcanhar para absorção de impacto após enterradas monstruosas.</p>
                 </div>
+                
+                <!-- NIKE JA 3 -->
                 <div class="carousel-item">
-                    <div class="sneaker-img-placeholder">[ FOTO JA 3 ]</div>
+                    <img src="ja3.png" alt="Nike Ja 3" class="sneaker-img">
                     <h3>Nike Ja 3</h3>
                     <p>Design respirável e agressivo, refletindo o estilo de rua nas quadras profissionais.</p>
                 </div>
+                
+                <!-- NIKE JA 4 -->
                 <div class="carousel-item">
-                    <div class="sneaker-img-placeholder">[ FOTO JA 4 ]</div>
+                    <img src="ja4.png" alt="Nike Ja 4" class="sneaker-img">
                     <h3>Nike Ja 4</h3>
                     <p>A evolução máxima da linha. Mais leveza e placa de propulsão para o primeiro passo.</p>
                 </div>
+
             </div>
 
             <button class="carousel-btn btn-next" onclick="moveCarousel(1)">❯</button>
