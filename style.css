@@ -1,5 +1,4 @@
 :root {
-    /* CORES DE FUNDO COM MAIOR DISTINÇÃO VISUAL */
     --bg-grizzlies: #070c16; 
     --bg-sneakers: #0f172a; 
     --bg-blazers: #17090c;
@@ -33,7 +32,7 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
-/* HEADER COM CORREÇÃO DE VISIBILIDADE DA LOGO */
+/* Header */
 header {
     position: fixed;
     top: 0;
@@ -54,7 +53,6 @@ header {
     gap: 12px;
 }
 
-/* CORREÇÃO DA LOGO: Inverte para branco e coloca brilho cyan */
 .logo-img {
     height: 38px;
     width: auto;
@@ -85,7 +83,7 @@ nav a:hover {
     color: var(--accent-blue);
 }
 
-/* SEÇÃO 1: GRIZZLIES ERA */
+/* Grizzlies Section */
 .section-grizzlies {
     padding: 140px 6% 80px;
     background: var(--bg-grizzlies);
@@ -93,7 +91,7 @@ nav a:hover {
     position: relative;
 }
 
-/* LAYOUT DO TOPO */
+/* Hero Layout */
 .split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -116,7 +114,7 @@ nav a:hover {
     overflow: hidden;
 }
 
-/* MINI MURAL CONTINUO NO HERO */
+/* Marquee */
 .mural-wrapper {
     width: 100%;
     max-width: 580px;
@@ -155,12 +153,8 @@ nav a:hover {
 }
 
 @keyframes scrollMural {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50% - 8px));
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 8px)); }
 }
 
 .badge-blue {
@@ -206,7 +200,7 @@ nav a:hover {
     margin-top: 4px;
 }
 
-/* CONTAINER DE HABILIDADES */
+/* Skills Container */
 .habilidades-container {
     padding-top: 50px;
     border-top: 1px solid rgba(56, 189, 248, 0.15);
@@ -225,7 +219,7 @@ nav a:hover {
     width: 100%;
 }
 
-/* CARDS DE HABILIDADES */
+/* Skill Cards */
 .flash-card {
     position: relative;
     height: 380px;
@@ -257,7 +251,7 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* DEGRADÊ EM CARD */
+/* Card Overlay */
 .flash-card .blur-overlay {
     position: absolute;
     bottom: 0;
@@ -298,7 +292,7 @@ nav a:hover {
     opacity: 0.9;
 }
 
-/* SEÇÃO TÊNIS - FUNDO DESTACADO COM BORDAS LUMINOSAS */
+/* Sneakers Section */
 .section-sneakers {
     padding: 120px 0;
     background: var(--bg-sneakers);
@@ -429,7 +423,7 @@ nav a:hover {
 .btn-prev { left: 2%; }
 .btn-next { right: 2%; }
 
-/* TRANSIÇÃO COM GRADIENTE SUAVE */
+/* Transition */
 .transition-divider {
     padding: 100px 6%;
     text-align: center;
@@ -452,7 +446,7 @@ nav a:hover {
     text-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
 }
 
-/* SEÇÃO BLAZERS - TOM VERMELHO/VERMELHÃO ESCURO DESTACADO */
+/* Blazers Section */
 .section-blazers {
     padding: 80px 6% 60px;
     background: var(--bg-blazers);
@@ -497,7 +491,7 @@ nav a:hover {
 
 .story-text:last-child { margin-bottom: 0; }
 
-/* FOOTER */
+/* Footer */
 .future-footer {
     padding: 80px 6%;
     text-align: center;
@@ -511,18 +505,18 @@ nav a:hover {
 .future-text {
     font-family: 'Syne', sans-serif;
     font-size: clamp(1.2rem, 3vw, 2rem);
-    color: rgba(255, 255, 255, 0.4);
     text-transform: uppercase;
     letter-spacing: 5px;
-    animation: pulse-future 3s infinite alternate ease-in-out;
+    font-weight: 800;
+    
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
-@keyframes pulse-future {
-    0% { opacity: 0.4; text-shadow: none; color: rgba(255, 255, 255, 0.4); }
-    100% { opacity: 1; text-shadow: 0 0 25px rgba(239, 68, 68, 0.6); color: var(--accent-red); }
-}
-
-/* RESPONSIVIDADE */
+/* Media Queries */
 @media (max-width: 1024px) {
     .flashcards-grid { grid-template-columns: repeat(2, 1fr); }
 }
