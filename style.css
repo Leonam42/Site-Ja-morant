@@ -191,14 +191,17 @@ nav a:hover {
     width: 100%;
 }
 
+/* --- ESTILO DOS CARDS CLICÁVEIS --- */
 .flash-card {
     position: relative;
     height: 380px;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: default;
+    cursor: pointer; /* Cursor de "mãozinha" indicando o clique */
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Tira o sublinhado padrão dos links */
+    display: block; /* Garante que o card ocupe o espaço correto como link */
 }
 
 .flash-card:hover, .flash-card:focus {
@@ -220,16 +223,17 @@ nav a:hover {
     transform: scale(1.05);
 }
 
+/* CAIXINHA MENOR E MAIS TRANSPARENTE */
 .flash-card .blur-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50%;
-    background: rgba(7, 10, 15, 0.75);
-    backdrop-filter: blur(12px);
+    height: 35%; /* Reduzido para mostrar mais a imagem */
+    background: rgba(7, 10, 15, 0.45); /* Mais transparente */
+    backdrop-filter: blur(8px); /* Desfoque um pouco mais suave */
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 20px;
+    padding: 15px 20px; /* Ajuste no preenchimento interno */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -237,23 +241,23 @@ nav a:hover {
 }
 
 .flash-card:hover .blur-overlay {
-    background: rgba(7, 10, 15, 0.9);
+    background: rgba(7, 10, 15, 0.65); /* Fica levemente mais escura no hover, mas ainda transparente */
 }
 
 .flash-card .blur-overlay h3 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--accent-blue);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .flash-card .blur-overlay p {
     color: #cbd5e1;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.82rem;
+    line-height: 1.3;
 }
 
 .watch-tag {
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--accent-blue);
