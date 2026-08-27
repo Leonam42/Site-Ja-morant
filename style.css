@@ -222,25 +222,31 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* --- DEGRADÊ MENOR QUE SOME PARA CIMA --- */
+/* --- CAIXINHA EM DEGRADÊ ATUALIZADA --- */
 .flash-card .blur-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: auto; /* Deixa o próprio texto definir a altura */
-    padding: 60px 20px 20px; /* O padding top grande faz o degradê sumir suavemente sem cortar a imagem */
-    /* Substituído o bloco sólido por um degradê que começa escuro embaixo e vai pro transparente em cima */
-    background: linear-gradient(to top, rgba(7, 10, 15, 0.95) 10%, rgba(7, 10, 15, 0.5) 60%, transparent 100%);
-    border-top: none; /* Removida a borda que criava aquele corte reto feio */
+    /* O padding alto em cima empurra o início do degradê sem cobrir a imagem */
+    padding: 100px 20px 20px 20px; 
+    
+    /* Degradê suave: começa quase preto embaixo e fica 100% invisível em cima */
+    background: linear-gradient(to top, rgba(7, 10, 15, 1) 0%, rgba(7, 10, 15, 0.5) 50%, rgba(7, 10, 15, 0) 100%);
+    
+    /* Forçando a barra para tirar qualquer linha ou borrão antigo */
+    border-top: none !important;
+    backdrop-filter: none !important; 
+    
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Garante que o texto fique colado lá embaixo */
     transition: background 0.3s;
 }
 
 .flash-card:hover .blur-overlay {
-    background: linear-gradient(to top, rgba(7, 10, 15, 1) 15%, rgba(7, 10, 15, 0.7) 65%, transparent 100%);
+    /* Degradê um pouquinho mais forte no hover, mas ainda sumindo no topo */
+    background: linear-gradient(to top, rgba(7, 10, 15, 1) 10%, rgba(7, 10, 15, 0.7) 60%, rgba(7, 10, 15, 0) 100%);
 }
 
 .flash-card .blur-overlay h3 {
