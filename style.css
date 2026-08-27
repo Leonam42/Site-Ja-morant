@@ -54,7 +54,7 @@ header {
 }
 
 .logo-img {
-    height: 35px; /* Tamanho agradável da logo */
+    height: 35px;
     width: auto;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
@@ -171,7 +171,7 @@ nav a:hover {
     margin-top: 4px;
 }
 
-/* CONTAINER DE HABILIDADES (Abaixo do Topo) */
+/* CONTAINER DE HABILIDADES */
 .habilidades-container {
     padding-top: 40px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -183,11 +183,10 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* CARDS OCUPANDO TODO O ESPAÇO DISTRIBUÍDO */
 .flashcards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 colunas com tamanhos iguais */
-    gap: 20px; /* Sem espaços vazios grandes, tudo alinhado */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     width: 100%;
 }
 
@@ -198,10 +197,10 @@ nav a:hover {
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    cursor: pointer; /* Cursor de "mãozinha" indicando o clique */
+    cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none; /* Tira o sublinhado padrão dos links */
-    display: block; /* Garante que o card ocupe o espaço correto como link */
+    text-decoration: none;
+    display: block;
 }
 
 .flash-card:hover, .flash-card:focus {
@@ -223,25 +222,25 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* CAIXINHA MENOR E MAIS TRANSPARENTE */
+/* --- DEGRADÊ MENOR QUE SOME PARA CIMA --- */
 .flash-card .blur-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 35%; /* Reduzido para mostrar mais a imagem */
-    background: rgba(7, 10, 15, 0.45); /* Mais transparente */
-    backdrop-filter: blur(8px); /* Desfoque um pouco mais suave */
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 15px 20px; /* Ajuste no preenchimento interno */
+    height: auto; /* Deixa o próprio texto definir a altura */
+    padding: 60px 20px 20px; /* O padding top grande faz o degradê sumir suavemente sem cortar a imagem */
+    /* Substituído o bloco sólido por um degradê que começa escuro embaixo e vai pro transparente em cima */
+    background: linear-gradient(to top, rgba(7, 10, 15, 0.95) 10%, rgba(7, 10, 15, 0.5) 60%, transparent 100%);
+    border-top: none; /* Removida a borda que criava aquele corte reto feio */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     transition: background 0.3s;
 }
 
 .flash-card:hover .blur-overlay {
-    background: rgba(7, 10, 15, 0.65); /* Fica levemente mais escura no hover, mas ainda transparente */
+    background: linear-gradient(to top, rgba(7, 10, 15, 1) 15%, rgba(7, 10, 15, 0.7) 65%, transparent 100%);
 }
 
 .flash-card .blur-overlay h3 {
@@ -484,11 +483,9 @@ nav a:hover {
     100% { opacity: 1; text-shadow: 0 0 25px rgba(239, 68, 68, 0.6); color: var(--accent-red); }
 }
 
-/* RESPONSIVIDADE (TELAS MENORES) */
+/* RESPONSIVIDADE */
 @media (max-width: 1024px) {
-    .flashcards-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
-    }
+    .flashcards-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -502,7 +499,5 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
-    .flashcards-grid {
-        grid-template-columns: 1fr; /* 1 coluna em celulares */
-    }
+    .flashcards-grid { grid-template-columns: 1fr; }
 }
