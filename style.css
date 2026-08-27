@@ -1,13 +1,14 @@
 :root {
-    --bg-grizzlies: #070a0f;
+    /* CORES DE FUNDO COM MAIOR DISTINÇÃO VISUAL */
+    --bg-grizzlies: #070c16; 
+    --bg-sneakers: #0f172a; 
+    --bg-blazers: #17090c;
+    
     --accent-blue: #38bdf8;
-    --blue-glow: rgba(56, 189, 248, 0.18);
+    --blue-glow: rgba(56, 189, 248, 0.25);
     
-    --bg-sneakers: #0a0f18;
-    
-    --bg-blazers: #090405;
     --accent-red: #ef4444;
-    --red-glow: rgba(239, 68, 68, 0.18);
+    --red-glow: rgba(239, 68, 68, 0.25);
     
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
@@ -32,7 +33,7 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
-/* HEADER COM LOGO ATUALIZADO */
+/* HEADER COM CORREÇÃO DE VISIBILIDADE DA LOGO */
 header {
     position: fixed;
     top: 0;
@@ -41,10 +42,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 6%;
-    background: rgba(7, 10, 15, 0.85);
-    backdrop-filter: blur(14px);
+    background: rgba(7, 12, 22, 0.9);
+    backdrop-filter: blur(16px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.15);
 }
 
 .logo-container {
@@ -53,10 +54,12 @@ header {
     gap: 12px;
 }
 
+/* CORREÇÃO DA LOGO: Inverte para branco e coloca brilho cyan */
 .logo-img {
-    height: 35px;
+    height: 38px;
     width: auto;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+    object-fit: contain;
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(56, 189, 248, 0.6));
 }
 
 .logo-text {
@@ -79,18 +82,18 @@ nav a {
 }
 
 nav a:hover {
-    color: var(--text-main);
+    color: var(--accent-blue);
 }
 
 /* SEÇÃO 1: GRIZZLIES ERA */
 .section-grizzlies {
     padding: 140px 6% 80px;
     background: var(--bg-grizzlies);
-    background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 45%);
+    background-image: radial-gradient(circle at 10% 20%, var(--blue-glow) 0%, transparent 50%);
     position: relative;
 }
 
-/* LAYOUT DO TOPO (DESTAQUE) */
+/* LAYOUT DO TOPO */
 .split-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -141,7 +144,7 @@ nav a:hover {
     object-fit: cover;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     flex-shrink: 0;
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
@@ -205,8 +208,8 @@ nav a:hover {
 
 /* CONTAINER DE HABILIDADES */
 .habilidades-container {
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 50px;
+    border-top: 1px solid rgba(56, 189, 248, 0.15);
     width: 100%;
 }
 
@@ -222,7 +225,7 @@ nav a:hover {
     width: 100%;
 }
 
-/* ESTILO DOS CARDS CLICÁVEIS */
+/* CARDS DE HABILIDADES */
 .flash-card {
     position: relative;
     height: 380px;
@@ -254,14 +257,14 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* CAIXINHA EM DEGRADÊ */
+/* DEGRADÊ EM CARD */
 .flash-card .blur-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     padding: 100px 20px 20px 20px; 
-    background: linear-gradient(to top, rgba(7, 10, 15, 1) 0%, rgba(7, 10, 15, 0.5) 50%, rgba(7, 10, 15, 0) 100%);
+    background: linear-gradient(to top, rgba(7, 12, 22, 1) 0%, rgba(7, 12, 22, 0.5) 50%, rgba(7, 12, 22, 0) 100%);
     border-top: none !important;
     backdrop-filter: none !important; 
     display: flex;
@@ -271,7 +274,7 @@ nav a:hover {
 }
 
 .flash-card:hover .blur-overlay {
-    background: linear-gradient(to top, rgba(7, 10, 15, 1) 10%, rgba(7, 10, 15, 0.7) 60%, rgba(7, 10, 15, 0) 100%);
+    background: linear-gradient(to top, rgba(7, 12, 22, 1) 10%, rgba(7, 12, 22, 0.75) 60%, rgba(7, 12, 22, 0) 100%);
 }
 
 .flash-card .blur-overlay h3 {
@@ -295,11 +298,14 @@ nav a:hover {
     opacity: 0.9;
 }
 
-/* SEÇÃO TÊNIS */
+/* SEÇÃO TÊNIS - FUNDO DESTACADO COM BORDAS LUMINOSAS */
 .section-sneakers {
     padding: 120px 0;
     background: var(--bg-sneakers);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-image: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -423,18 +429,19 @@ nav a:hover {
 .btn-prev { left: 2%; }
 .btn-next { right: 2%; }
 
-/* TRANSIÇÃO */
+/* TRANSIÇÃO COM GRADIENTE SUAVE */
 .transition-divider {
     padding: 100px 6%;
     text-align: center;
     background: linear-gradient(180deg, var(--bg-sneakers) 0%, var(--bg-blazers) 100%);
+    border-bottom: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .transition-text {
     font-family: 'Syne', sans-serif;
     font-size: clamp(3.5rem, 8vw, 7rem);
     font-weight: 900;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.12);
     text-transform: lowercase;
     transition: 0.5s;
     cursor: default;
@@ -445,11 +452,11 @@ nav a:hover {
     text-shadow: 0 0 40px rgba(239, 68, 68, 0.5);
 }
 
-/* SEÇÃO BLAZERS */
+/* SEÇÃO BLAZERS - TOM VERMELHO/VERMELHÃO ESCURO DESTACADO */
 .section-blazers {
     padding: 80px 6% 60px;
     background: var(--bg-blazers);
-    background-image: radial-gradient(circle at 90% 80%, var(--red-glow) 0%, transparent 40%);
+    background-image: radial-gradient(circle at 90% 80%, var(--red-glow) 0%, transparent 50%);
 }
 
 .badge-red {
@@ -466,10 +473,11 @@ nav a:hover {
     max-width: 900px;
     margin: 60px 0;
     padding: 40px;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.03);
     border-left: 4px solid var(--accent-red);
     border-radius: 0 16px 16px 0;
     backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .story-box h3 {
@@ -494,7 +502,7 @@ nav a:hover {
     padding: 80px 6%;
     text-align: center;
     background: var(--bg-blazers);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
